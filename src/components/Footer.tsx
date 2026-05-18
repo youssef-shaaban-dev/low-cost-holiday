@@ -22,7 +22,7 @@ export default function Footer() {
     { name: "تقييمات المسافرين", href: "#reviews" },
   ];
 
-  const waLink = "https://wa.me/201021487823?text=مرحباً لو كوست هوليدايز، أود التواصل مع خدمة العملاء لطلب عرض سعر.";
+  const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود التواصل مع خدمة العملاء لطلب عرض سعر.";
 
   return (
     <footer className="bg-[#0b1222] text-white pt-20 border-t border-white/5 relative overflow-hidden">
@@ -34,18 +34,15 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
           {/* Logo & Agency Info */}
           <div>
-            <a href="#hero" className="flex items-center gap-2 group mb-6 self-start inline-flex">
-              <div className="p-2 bg-brand-orange text-white rounded-xl transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 shadow-lg shadow-brand-orange/30">
-                <Plane className="w-6 h-6 rotate-45" />
-              </div>
-              <div className="flex flex-col text-right">
-                <span className="text-xl font-black tracking-tight text-white group-hover:text-brand-orange transition-colors">
-                  LOW COST
-                </span>
-                <span className="text-[10px] tracking-wider text-brand-orange font-bold -mt-1.5 self-start">
-                  HOLIDAYS
-                </span>
-              </div>
+            <a 
+              href="#hero" 
+              className="flex items-center gap-2 group mb-6 self-start inline-flex"
+            >
+              <img 
+                src="/LCH.png" 
+                alt="Low Cost Holidays Logo" 
+                className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+              />
             </a>
             <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">
               الوكالة الأولى بمصر المتخصصة في تقديم أقوى باقات السفر الفاخرة والاقتصادية لتركيا وتونس. نجمع لك بين التكلفة الذكية، الطيران المباشر المريح، والفنادق الراقية لنوفر لك إجازة العمر بدون أعباء مالية.
@@ -113,10 +110,10 @@ export default function Footer() {
               <li className="flex items-center gap-3">
                 <Phone className="w-5 h-5 text-brand-orange shrink-0" />
                 <a
-                  href="tel:+201021487823"
+                  href="tel:+201000961382"
                   className="text-sm font-semibold text-white/80 hover:text-brand-orange tracking-wider transition-colors"
                 >
-                  +20 102 148 7823
+                  +20 100 096 1382
                 </a>
               </li>
               <li className="flex items-center gap-3">

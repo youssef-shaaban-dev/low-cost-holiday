@@ -27,7 +27,7 @@ export default function Header() {
     { name: "آراء عملائنا", href: "#reviews" },
   ];
 
-  const waLink = "https://wa.me/201021487823?text=مرحباً لو كوست هوليدايز، أود الاستفسار عن عروض السفر لتركيا وتونس.";
+  const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود الاستفسار عن عروض السفر لتركيا وتونس.";
 
   return (
     <header
@@ -40,18 +40,15 @@ export default function Header() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between">
           {/* Logo */}
-          <a href="#hero" className="flex items-center gap-2 group">
-            <div className="p-2 bg-brand-orange text-white rounded-xl transition-all duration-300 group-hover:rotate-12 group-hover:scale-110 shadow-lg shadow-brand-orange/30">
-              <Plane className="w-6 h-6 rotate-45" />
-            </div>
-            <div className="flex flex-col">
-              <span className="text-xl sm:text-2xl font-black tracking-tight text-white group-hover:text-brand-orange transition-colors">
-                LOW COST
-              </span>
-              <span className="text-[10px] tracking-wider text-brand-orange font-bold -mt-1.5 self-start">
-                HOLIDAYS
-              </span>
-            </div>
+          <a 
+            href="#hero" 
+            className="flex items-center gap-2 group"
+          >
+            <img 
+              src="/LCH.png" 
+              alt="Low Cost Holidays Logo" 
+              className="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+            />
           </a>
 
           {/* Desktop Navigation */}
@@ -101,10 +98,11 @@ export default function Header() {
       >
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-2">
-            <div className="p-1.5 bg-brand-orange text-white rounded-lg">
-              <Plane className="w-5 h-5 rotate-45" />
-            </div>
-            <span className="text-lg font-black text-white">LOW COST</span>
+            <img 
+              src="/LCH.png" 
+              alt="Low Cost Holidays Logo" 
+              className="h-11 sm:h-12 w-auto object-contain" 
+            />
           </div>
           <button
             onClick={() => setIsOpen(false)}

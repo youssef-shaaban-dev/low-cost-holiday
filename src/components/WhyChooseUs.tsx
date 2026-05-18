@@ -93,7 +93,7 @@ export default function WhyChooseUs() {
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6, delay: 0.4 }}
-          className="mt-16 bg-gradient-to-r from-brand-orange to-[#FF8A5B] rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-brand-orange/20 text-white"
+          className="mt-16 bg-gradient-to-r from-brand-sky to-[#3572A9] rounded-3xl p-8 sm:p-10 flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-brand-sky/30 text-white"
         >
           <div className="text-center md:text-right max-w-xl">
             <h3 className="text-2xl font-black mb-2">جاهز لتخطيط رحلتك معنا؟</h3>
@@ -102,7 +102,7 @@ export default function WhyChooseUs() {
             </p>
           </div>
           <a
-            href="https://wa.me/201021487823?text=مرحباً، أود الحصول على استشارة سفر مجانية لتركيا أو تونس."
+            href="https://wa.me/201000961382?text=مرحباً، أود الحصول على استشارة سفر مجانية لتركيا أو تونس."
             target="_blank"
             rel="noopener noreferrer"
             className="bg-brand-blue hover:bg-brand-blue/90 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 shrink-0 text-sm sm:text-base"

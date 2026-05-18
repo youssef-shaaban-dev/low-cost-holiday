@@ -14,7 +14,7 @@ export default function Packages() {
 
   const getWaLink = (pkg: TravelPackage) => {
     const text = encodeURIComponent(pkg.whatsappMessage);
-    return `https://wa.me/201021487823?text=${text}`;
+    return `https://wa.me/201000961382?text=${text}`;
   };
 
   return (

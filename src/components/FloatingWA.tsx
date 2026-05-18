@@ -18,7 +18,7 @@ export default function FloatingWA() {
     return () => window.removeEventListener("scroll", toggleVisibility);
   }, []);
 
-  const waLink = "https://wa.me/201021487823?text=مرحباً لو كوست هوليدايز، أود الاستفسار عن عروض السفر المتوفرة لتركيا وتونس حالياً.";
+  const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود الاستفسار عن عروض السفر المتوفرة لتركيا وتونس حالياً.";
 
   if (!isVisible) return null;
 

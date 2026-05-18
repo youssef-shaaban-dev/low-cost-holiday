@@ -1,7 +1,7 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { MessageSquare, Calendar, ShieldCheck, Star } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Calendar, ShieldCheck, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
 
 const sliderImages = [
@@ -32,7 +32,6 @@ export default function Hero() {
     return () => clearInterval(timer);
   }, []);
 
-  const waLink = "https://wa.me/201021487823?text=مرحباً لو كوست هوليدايز، أود حجز رحلتي لتركيا أو تونس الآن.";
 
   return (
     <section id="hero" className="relative h-screen min-h-[650px] w-full flex items-center justify-center overflow-hidden bg-brand-blue">
@@ -50,22 +49,12 @@ export default function Hero() {
           />
         </AnimatePresence>
         {/* Dark Gradient Overlay for optimal text contrast */}
-        <div className="absolute inset-0 bg-gradient-to-t from-brand-blue via-brand-blue/60 to-brand-blue/30" />
+        <div className="absolute inset-0 bg-linear-to-t from-brand-blue via-brand-blue/60 to-brand-blue/30" />
       </div>
 
       {/* Content Area */}
       <div className="relative z-10 w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center text-white pt-20">
         <div className="flex flex-col items-center">
-          {/* Badge */}
-          <motion.div
-            initial={{ opacity: 0, y: -20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6 }}
-            className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-brand-orange/20 border border-brand-orange/40 text-brand-orange font-bold text-xs sm:text-sm mb-6 uppercase tracking-wider"
-          >
-            <Star className="w-4 h-4 fill-brand-orange" />
-            <span>الوكالة رقم #1 لرحلات تركيا وتونس الاقتصادية</span>
-          </motion.div>
 
           {/* Captivating Headline */}
           <motion.h1
@@ -89,23 +78,6 @@ export default function Hero() {
             استمتع بأقوى باقات السفر المتكاملة (طيران مباشر + فنادق راقية 4* و 5* + انتقالات + جولات سياحية). احجز الآن بأقل مقدم والباقي قبل السفر!
           </motion.p>
 
-          {/* Direct CTA Action Button */}
-          <motion.div
-            initial={{ opacity: 0, scale: 0.9 }}
-            animate={{ opacity: 1, scale: 1 }}
-            transition={{ duration: 0.8, delay: 0.6 }}
-            className="w-full sm:w-auto px-4"
-          >
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="orange-pulse inline-flex items-center justify-center gap-3 w-full sm:w-auto bg-brand-orange hover:bg-brand-orange/95 text-white text-lg font-black px-8 py-5 rounded-2xl shadow-2xl shadow-brand-orange/50 transition-all duration-300 hover:scale-105 active:scale-95"
-            >
-              <MessageSquare className="w-6 h-6 fill-white" />
-              <span>احجز رحلتك الآن عبر الواتساب</span>
-            </a>
-          </motion.div>
 
           {/* Slide Caption Indicator */}
           <div className="absolute bottom-8 right-4 sm:right-8 md:right-16 text-right hidden md:block">
