@@ -48,9 +48,9 @@ export default function Header() {
             <Image 
               src="/LCH.png" 
               alt="Low Cost Holidays Logo" 
-              width={65} 
-              height={65} 
-              className="w-24 h-24 rounded-xl object-contain transition-transform duration-300 group-hover:scale-105" 
+              width={140} 
+              height={48} 
+              className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
             />
           </a>
 
@@ -100,13 +100,19 @@ export default function Header() {
         }`}
       >
         <div className="flex items-center justify-between mb-8">
-          <div className="flex items-center gap-2">
-            <img 
+          <a 
+            href="#hero"
+            onClick={() => setIsOpen(false)}
+            className="flex items-center gap-2"
+          >
+            <Image 
               src="/LCH.png" 
               alt="Low Cost Holidays Logo" 
-              className="h-11 sm:h-12 w-auto object-contain" 
+              width={160}
+              height={160}
+              className="h-24 w-auto object-contain" 
             />
-          </div>
+          </a>
           <button
             onClick={() => setIsOpen(false)}
             className="text-white/80 hover:text-brand-orange p-1"
