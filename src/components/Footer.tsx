@@ -2,6 +2,7 @@
 
 import React from "react";
 import { Plane, Phone, Mail, MapPin, ShieldAlert, Award, CreditCard, ShieldCheck } from "lucide-react";
+import Image from "next/image";
 
 export default function Footer() {
   const currentYear = new Date().getFullYear();
@@ -36,11 +37,13 @@ export default function Footer() {
           <div>
             <a 
               href="#hero" 
-              className="flex items-center gap-2 group mb-6 self-start inline-flex"
+              className="flex items-center gap-2 group mb-6 self-start"
             >
-              <img 
+              <Image 
                 src="/LCH.png" 
                 alt="Low Cost Holidays Logo" 
+                width={200}
+                height={200}
                 className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
             </a>
