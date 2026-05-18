@@ -1,15 +1,15 @@
 @import "tailwindcss";
 
 @theme {
-  --color-brand-blue: #14213D;
-  --color-brand-orange: #2C90E5;
-  --color-brand-sky: #2C90E5;
+  --color-brand-blue: #1C325B;
+  --color-brand-orange: #4AB3FF;
+  --color-brand-sky: #4AB3FF;
   --font-cairo: var(--font-cairo), sans-serif;
 }
 
 :root {
   --background: #F8F9FA;
-  --foreground: #14213D;
+  --foreground: #1C325B;
 }
 
 html {
@@ -28,11 +28,11 @@ body {
 }
 
 .orange-gradient {
-  background: linear-gradient(135deg, #2C90E5 0%, #1A73C2 100%);
+  background: linear-gradient(135deg, #4AB3FF 0%, #2993E5 100%);
 }
 
 .blue-gradient {
-  background: linear-gradient(135deg, #14213D 0%, #0A1224 100%);
+  background: linear-gradient(135deg, #1C325B 0%, #0F1C36 100%);
 }
 
 /* Custom WhatsApp Floating Pulse */
@@ -59,15 +59,15 @@ body {
 @keyframes pulse-orange {
   0% {
     transform: scale(0.97);
-    box-shadow: 0 0 0 0 rgba(44, 144, 229, 0.6);
+    box-shadow: 0 0 0 0 rgba(74, 179, 255, 0.6);
   }
   70% {
     transform: scale(1.03);
-    box-shadow: 0 0 0 12px rgba(44, 144, 229, 0);
+    box-shadow: 0 0 0 12px rgba(74, 179, 255, 0);
   }
   100% {
     transform: scale(0.97);
-    box-shadow: 0 0 0 0 rgba(44, 144, 229, 0);
+    box-shadow: 0 0 0 0 rgba(74, 179, 255, 0);
   }
 }
 
