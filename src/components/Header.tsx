@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect } from "react";
 import { Phone, Menu, X, Plane } from "lucide-react";
+import Image from "next/image";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -44,10 +45,12 @@ export default function Header() {
             href="#hero" 
             className="flex items-center gap-2 group"
           >
-            <img 
+            <Image 
               src="/LCH.png" 
               alt="Low Cost Holidays Logo" 
-              className="h-14 sm:h-16 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+              width={65} 
+              height={65} 
+              className="w-24 h-24 rounded-xl object-contain transition-transform duration-300 group-hover:scale-105" 
             />
           </a>
 
