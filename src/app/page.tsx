@@ -1,7 +1,6 @@
-import React from "react";
 import Header from "../components/Header";
 import Hero from "../components/Hero";
-import Destinations from "../components/Destinations";
+// import Destinations from "../components/Destinations";
 import Packages from "../components/Packages";
 import WhyChooseUs from "../components/WhyChooseUs";
 import Reviews from "../components/Reviews";
@@ -14,12 +13,12 @@ export default function Home() {
       {/* Header / Navigation Bar */}
       <Header />
 
-      <main className="flex-grow">
+      <main className="grow">
         {/* Premium Hero Section */}
         <Hero />
 
         {/* Animated Destinations Grid */}
-        <Destinations />
+        {/* <Destinations /> */}
 
         {/* Featured Packages Grid */}
         <Packages />
