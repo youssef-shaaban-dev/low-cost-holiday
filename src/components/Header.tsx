@@ -49,9 +49,9 @@ export default function Header() {
               <Image 
                 src="/white-logo.png" 
                 alt="Low Cost Holidays Logo" 
-                width={140} 
-                height={48} 
-                className="h-12 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                width={200} 
+                height={200} 
+                className="h-20 sm:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
             </a>
 
