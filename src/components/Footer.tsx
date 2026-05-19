@@ -40,7 +40,7 @@ export default function Footer() {
               className="flex items-center gap-2 group mb-6 self-start"
             >
               <Image 
-                src="/LCH.png" 
+                src="/white-logo.png" 
                 alt="Low Cost Holidays Logo" 
                 width={200}
                 height={200}

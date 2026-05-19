@@ -47,7 +47,7 @@ export default function Header() {
               className="flex items-center gap-2 group"
             >
               <Image 
-                src="/LCH.png" 
+                src="/white-logo.png" 
                 alt="Low Cost Holidays Logo" 
                 width={140} 
                 height={48} 
@@ -109,7 +109,7 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <Image 
-              src="/LCH.png" 
+              src="/white-logo.png" 
               alt="Low Cost Holidays Logo" 
               width={160}
               height={160}

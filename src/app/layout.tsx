@@ -33,7 +33,7 @@ export const metadata: Metadata = {
     siteName: "لو كوست هوليدايز",
     images: [
       {
-        url: "/LCH.png",
+        url: "/white-logo.png",
         width: 800,
         height: 800,
         alt: "لو كوست هوليدايز",
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "لو كوست هوليدايز | أرخص عروض السفر لتركيا وتونس من مصر",
     description: "سافر إلى إسطنبول، أنطاليا، وتونس بأرخص الأسعار في مصر. رحلات طيران مباشر، فنادق مختارة بعناية 4 نجوم و 5 نجوم، وانتقالات كاملة. احجز رحلتك الآن وسافر بأمان.",
-    images: ["/LCH.png"],
+    images: ["/white-logo.png"],
   },
 };
 
