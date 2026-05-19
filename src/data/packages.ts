@@ -73,7 +73,7 @@ export const packages: TravelPackage[] = [
       guide: true
     },
     badge: "عرض لفترة محدودة",
-    image: "https://images.unsplash.com/photo-1527838832700-50592524df75?auto=format&fit=crop&w=800&q=80",
+    image: "/turkey-combo.png",
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز العرض الثنائي إسطنبول وأنطاليا معاً (34,800 جنيه)"
   },
   {
@@ -92,7 +92,7 @@ export const packages: TravelPackage[] = [
       guide: true
     },
     badge: "الأكثر مبيعاً",
-    image: "https://images.unsplash.com/photo-1589182337358-2cb63acfc9c5?auto=format&fit=crop&w=800&q=80",
+    image: "/tunisia-hammamet.png",
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة تونس الخضراء وياسمين الحمامات (21,900 جنيه)"
   },
   {
