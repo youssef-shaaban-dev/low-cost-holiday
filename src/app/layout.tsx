@@ -50,6 +50,10 @@ export const metadata: Metadata = {
   },
 };
 
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import FloatingWA from "@/components/FloatingWA";
+
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -62,7 +66,10 @@ export default function RootLayout({
       className={`${cairo.variable} h-full antialiased scroll-smooth`}
     >
       <body className="min-h-full flex flex-col bg-brand-offwhite text-brand-blue font-cairo overflow-x-hidden selection:bg-brand-orange selection:text-white">
-        {children}
+        <Header />
+        <main className="grow flex flex-col">{children}</main>
+        <Footer />
+        <FloatingWA />
       </body>
     </html>
   );

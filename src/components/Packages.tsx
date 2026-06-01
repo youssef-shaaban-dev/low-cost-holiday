@@ -1,11 +1,14 @@
 "use client";
 
 import React, { useState } from "react";
-import { Plane, Hotel, Bus, Compass, Star, MessageSquare, Check, X } from "lucide-react";
+import { Plane, Hotel, Bus, Compass, Star, MessageSquare} from "lucide-react";
 import { packages, TravelPackage } from "../data/packages";
 import { motion, AnimatePresence } from "framer-motion";
+import { useRouter } from "next/navigation";
+import Image from "next/image";
 
 export default function Packages() {
+  const router = useRouter();
   const [filter, setFilter] = useState<"all" | "turkey" | "tunisia">("all");
 
   const filteredPackages = packages.filter(
@@ -86,18 +89,21 @@ export default function Packages() {
                 animate={{ opacity: 1, y: 0 }}
                 exit={{ opacity: 0, scale: 0.9 }}
                 transition={{ duration: 0.5 }}
-                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-brand-blue/5 flex flex-col h-full group transition-all duration-300"
+                onClick={() => router.push(`/packages/${pkg.id}`)}
+                className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-brand-blue/5 flex flex-col h-full group transition-all duration-300 cursor-pointer"
               >
                 {/* Image Container with aspect ratio and hover-zoom */}
                 <div className="relative aspect-video w-full overflow-hidden">
-                  <img
+                  <Image
                     src={pkg.image}
                     alt={pkg.title}
                     className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-108"
                     loading="lazy"
+                    width={500}
+                    height={500}
                   />
                   {/* Aspect Dark Overlay */}
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/50 via-transparent to-transparent opacity-60" />
+                  <div className="absolute inset-0 bg-linear-to-t from-black/50 via-transparent to-transparent opacity-60" />
 
                   {/* Badge */}
                   <span className="absolute top-4 right-4 z-10 bg-brand-orange text-white text-xs font-black px-3.5 py-1.5 rounded-xl shadow-lg">
@@ -111,7 +117,7 @@ export default function Packages() {
                 </div>
 
                 {/* Card Content */}
-                <div className="p-6 sm:p-8 flex flex-col flex-grow justify-between">
+                <div className="p-6 sm:p-8 flex flex-col grow justify-between">
                   <div>
                     {/* Hotel star and duration */}
                     <div className="flex items-center justify-between mb-3.5 text-xs text-brand-blue/60 font-bold">
@@ -189,6 +195,7 @@ export default function Packages() {
                       href={getWaLink(pkg)}
                       target="_blank"
                       rel="noopener noreferrer"
+                      onClick={(e) => e.stopPropagation()}
                       className="inline-flex items-center gap-1.5 bg-emerald-600 hover:bg-emerald-700 text-white font-black px-4.5 py-3 rounded-2xl text-xs sm:text-sm shadow-md shadow-emerald-600/20 active:scale-95 transition-all duration-300 group/btn"
                     >
                       <MessageSquare className="w-4 h-4 fill-white group-hover/btn:animate-bounce" />

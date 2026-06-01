@@ -21,11 +21,11 @@ export default function Header() {
   }, []);
 
   const navLinks = [
-    { name: "الرئيسية", href: "#hero" },
-    { name: "وجهاتنا", href: "#destinations" },
-    { name: "عروض السفر", href: "#packages" },
-    { name: "لماذا تختارنا", href: "#why-choose-us" },
-    { name: "آراء عملائنا", href: "#reviews" },
+    { name: "الرئيسية", href: "/#hero" },
+    { name: "وجهاتنا", href: "/#destinations" },
+    { name: "عروض السفر", href: "/#packages" },
+    { name: "لماذا تختارنا", href: "/#why-choose-us" },
+    { name: "آراء عملائنا", href: "/#reviews" },
   ];
 
   const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود الاستفسار عن عروض السفر لتركيا وتونس.";
@@ -43,7 +43,7 @@ export default function Header() {
           <div className="flex items-center justify-between">
             {/* Logo */}
             <a 
-              href="#hero" 
+              href="/#hero" 
               className="flex items-center gap-2 group"
             >
               <Image 
@@ -104,7 +104,7 @@ export default function Header() {
       >
         <div className="flex items-center justify-between mb-8">
           <a 
-            href="#hero"
+            href="/#hero"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2"
           >
