@@ -1,8 +1,9 @@
 "use client";
 
-import React, { useState, useEffect } from "react";
-import { Phone, Menu, X, Plane } from "lucide-react";
+import { useState, useEffect } from "react";
+import { Phone, Menu, X } from "lucide-react";
 import Image from "next/image";
+import Link from "next/link";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
@@ -42,7 +43,7 @@ export default function Header() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="flex items-center justify-between">
             {/* Logo */}
-            <a 
+            <Link
               href="/#hero" 
               className="flex items-center gap-2 group"
             >
@@ -53,18 +54,18 @@ export default function Header() {
                 height={200} 
                 className="h-20 sm:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
               />
-            </a>
+            </Link>
 
             {/* Desktop Navigation */}
             <nav className="hidden md:flex items-center gap-8">
               {navLinks.map((link) => (
-                <a
+                <Link
                   key={link.name}
                   href={link.href}
-                  className="text-sm font-semibold text-white/80 hover:text-brand-orange hover:translate-y-[-1px] transition-all duration-255"
+                  className="text-sm font-semibold text-white/80 hover:text-brand-orange hover:translate-y-px transition-all duration-255"
                 >
                   {link.name}
-                </a>
+                </Link>
               ))}
             </nav>
 
@@ -103,7 +104,7 @@ export default function Header() {
         style={{ zIndex: 9999 }}
       >
         <div className="flex items-center justify-between mb-8">
-          <a 
+          <Link 
             href="/#hero"
             onClick={() => setIsOpen(false)}
             className="flex items-center gap-2"
@@ -115,7 +116,7 @@ export default function Header() {
               height={160}
               className="h-24 w-auto object-contain" 
             />
-          </a>
+          </Link>
           <button
             onClick={() => setIsOpen(false)}
             className="text-white/80 hover:text-brand-orange p-1"
