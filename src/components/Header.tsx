@@ -4,10 +4,13 @@ import { useState, useEffect } from "react";
 import { Phone, Menu, X } from "lucide-react";
 import Image from "next/image";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
 
 export default function Header() {
   const [isOpen, setIsOpen] = useState(false);
   const [scrolled, setScrolled] = useState(false);
+  const pathname = usePathname();
+  const isHome = pathname === "/";
 
   useEffect(() => {
     const handleScroll = () => {
@@ -35,7 +38,7 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-          scrolled
+          scrolled || !isHome
             ? "bg-brand-blue/95 backdrop-blur-md shadow-lg py-3 border-b border-white/10"
             : "bg-transparent py-5"
         }`}

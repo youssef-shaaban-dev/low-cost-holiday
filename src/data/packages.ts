@@ -15,6 +15,7 @@ export interface TravelPackage {
   };
   badge: "طيران مباشر" | "الأكثر مبيعاً" | "عرض لفترة محدودة" | "عائلي مميز";
   image: string;
+  images: string[];
   whatsappMessage: string;
 }
 
@@ -36,6 +37,11 @@ export const packages: TravelPackage[] = [
     },
     badge: "الأكثر مبيعاً",
     image: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1527838832700-50592524df73?auto=format&fit=crop&w=600&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة إسطنبول الكلاسيكية (24,500 جنيه)"
   },
   {
@@ -55,6 +61,11 @@ export const packages: TravelPackage[] = [
     },
     badge: "طيران مباشر",
     image: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1618390772297-c6b75c065fde?auto=format&fit=crop&w=600&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة شواطئ أنطاليا (29,900 جنيه)"
   },
   {
@@ -74,6 +85,11 @@ export const packages: TravelPackage[] = [
     },
     badge: "عرض لفترة محدودة",
     image: "/turkey-combo.png",
+    images: [
+      "/turkey-combo.png",
+      "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز العرض الثنائي إسطنبول وأنطاليا معاً (34,800 جنيه)"
   },
   {
@@ -92,7 +108,12 @@ export const packages: TravelPackage[] = [
       guide: true
     },
     badge: "الأكثر مبيعاً",
-    image: "/tunisia-hammamet.png",
+    image: "/tunis-hammamet.png",
+    images: [
+      "/tunis-hammamet.png",
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة تونس الخضراء وياسمين الحمامات (21,900 جنيه)"
   },
   {
@@ -112,6 +133,11 @@ export const packages: TravelPackage[] = [
     },
     badge: "عائلي مميز",
     image: "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار عن رحلة استجمام الحمامات الفاخر (26,400 جنيه)"
   },
   {
@@ -131,6 +157,11 @@ export const packages: TravelPackage[] = [
     },
     badge: "طيران مباشر",
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+    images: [
+      "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
+      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1596178060810-72cb658b1a8d?auto=format&fit=crop&w=600&q=80"
+    ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة اكتشاف قرطاج وسيدي بوسعيد الأسطورية (19,800 جنيه)"
   }
 ];
