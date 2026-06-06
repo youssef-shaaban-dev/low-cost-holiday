@@ -64,6 +64,7 @@ export default function RootLayout({
       lang="ar"
       dir="rtl"
       className={`${cairo.variable} h-full antialiased scroll-smooth`}
+      data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-brand-offwhite text-brand-blue font-cairo overflow-x-hidden selection:bg-brand-orange selection:text-white">
         <Header />
