@@ -40,7 +40,7 @@ export const packages: TravelPackage[] = [
     images: [
       "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1527838832700-50592524df73?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1543872084-c7bd3822856f?auto=format&fit=crop&w=600&q=80"
     ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة إسطنبول الكلاسيكية (24,500 جنيه)"
   },
@@ -64,7 +64,7 @@ export const packages: TravelPackage[] = [
     images: [
       "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1618390772297-c6b75c065fde?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=600&q=80"
     ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة شواطئ أنطاليا (29,900 جنيه)"
   },
@@ -112,7 +112,7 @@ export const packages: TravelPackage[] = [
     images: [
       "/tunis-hammamet.png",
       "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=600&q=80"
     ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة تونس الخضراء وياسمين الحمامات (21,900 جنيه)"
   },
@@ -136,7 +136,7 @@ export const packages: TravelPackage[] = [
     images: [
       "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1568292342316-60aa3d36f4b3?auto=format&fit=crop&w=600&q=80"
     ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار عن رحلة استجمام الحمامات الفاخر (26,400 جنيه)"
   },
@@ -159,8 +159,8 @@ export const packages: TravelPackage[] = [
     image: "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
     images: [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=800&q=80",
-      "https://images.unsplash.com/photo-1589825316438-c6fb0617300c?auto=format&fit=crop&w=600&q=80",
-      "https://images.unsplash.com/photo-1596178060810-72cb658b1a8d?auto=format&fit=crop&w=600&q=80"
+      "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80",
+      "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=600&q=80"
     ],
     whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة اكتشاف قرطاج وسيدي بوسعيد الأسطورية (19,800 جنيه)"
   }
