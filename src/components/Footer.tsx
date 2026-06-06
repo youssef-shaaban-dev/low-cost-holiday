@@ -104,32 +104,6 @@ export default function Footer() {
           </div>
         </div>
 
-        {/* Badges strip (legal/partnership/security) */}
-        <div className="border-t border-white/5 py-8 flex flex-col sm:flex-row items-center justify-between gap-6">
-          {/* Security & Partnership logos */}
-          <div className="flex flex-wrap items-center gap-5 justify-center">
-            <div className="flex items-center gap-1.5 text-white/40 text-xs font-bold border border-white/5 bg-white/3 py-1.5 px-3.5 rounded-lg">
-              <CreditCard className="w-4 h-4" />
-              <span>دفع آمن بالكامل</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-white/40 text-xs font-bold border border-white/5 bg-white/3 py-1.5 px-3.5 rounded-lg">
-              <Award className="w-4 h-4" />
-              <span>باقات مضمونة 100%</span>
-            </div>
-          </div>
-
-          {/* Social and quick contacts */}
-          <div className="text-center sm:text-right">
-            <a
-              href={waLink}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="inline-flex items-center gap-2 text-xs font-black text-brand-orange hover:text-white bg-brand-orange/10 border border-brand-orange/20 hover:bg-brand-orange px-4 py-2 rounded-xl transition-all duration-300 shadow-md"
-            >
-              💬 راسلنا الآن على واتساب لأي استفسار طوال اليوم
-            </a>
-          </div>
-        </div>
 
         {/* Copyright Area */}
         <div className="border-t border-white/5 pt-8 text-center text-xs text-white/40 font-semibold">

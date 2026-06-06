@@ -79,42 +79,6 @@ export default function Hero() {
           </motion.p>
 
 
-          {/* Slide Caption Indicator */}
-          <div className="absolute bottom-8 right-4 sm:right-8 md:right-16 text-right hidden md:block">
-            <span className="text-xs text-brand-orange font-bold uppercase tracking-widest block mb-1">الوجهة المعروضة الآن</span>
-            <span className="text-xl font-bold text-white block">{sliderImages[currentSlide].title}</span>
-            <span className="text-sm text-white/60 block">{sliderImages[currentSlide].caption}</span>
-          </div>
-
-          {/* Value Propositions Indicators */}
-          <motion.div
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1, delay: 0.8 }}
-            className="grid grid-cols-3 gap-4 sm:gap-8 max-w-3xl w-full mt-16 sm:mt-24 border-t border-white/10 pt-8"
-          >
-            <div className="flex flex-col items-center text-center">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-orange mb-3">
-                <Calendar className="w-6 h-6" />
-              </div>
-              <h3 className="text-xs sm:text-sm font-bold text-white">تأشيرات سريعة</h3>
-              <p className="text-[10px] sm:text-xs text-white/50 mt-1">تسهيل كافة الإجراءات</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-orange mb-3">
-                <ShieldCheck className="w-6 h-6" />
-              </div>
-              <h3 className="text-xs sm:text-sm font-bold text-white">أرخص سعر بمصر</h3>
-              <p className="text-[10px] sm:text-xs text-white/50 mt-1">باقات اقتصادية 100%</p>
-            </div>
-            <div className="flex flex-col items-center text-center">
-              <div className="p-3 bg-white/5 rounded-xl border border-white/10 text-brand-orange mb-3">
-                <Star className="w-6 h-6" />
-              </div>
-              <h3 className="text-xs sm:text-sm font-bold text-white">فنادق مختارة</h3>
-              <p className="text-[10px] sm:text-xs text-white/50 mt-1">إقامة مريحة ومجربة</p>
-            </div>
-          </motion.div>
         </div>
       </div>
     </section>
