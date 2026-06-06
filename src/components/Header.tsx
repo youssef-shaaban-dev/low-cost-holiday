@@ -26,7 +26,6 @@ export default function Header() {
 
   const navLinks = [
     { name: "الرئيسية", href: "/#hero" },
-    { name: "وجهاتنا", href: "/#destinations" },
     { name: "عروض السفر", href: "/#packages" },
     { name: "لماذا تختارنا", href: "/#why-choose-us" },
     { name: "آراء عملائنا", href: "/#reviews" },

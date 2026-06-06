@@ -7,20 +7,11 @@ import Image from "next/image";
 export default function Footer() {
   const currentYear = new Date().getFullYear();
 
-  const destinationsList = [
-    { name: "إسطنبول الكلاسيكية", href: "#packages" },
-    { name: "شواطئ أنطاليا عائلية", href: "#packages" },
-    { name: "العرض الثنائي (تركيا)", href: "#packages" },
-    { name: "تونس الخضراء والحمامات", href: "#packages" },
-    { name: "استجمام ياسمين الحمامات", href: "#packages" },
-  ];
-
   const quickLinks = [
-    { name: "الرئيسية", href: "#hero" },
-    { name: "الوجهات السياحية", href: "#destinations" },
-    { name: "عروض السفر والأسعار", href: "#packages" },
-    { name: "لماذا تختارنا", href: "#why-choose-us" },
-    { name: "تقييمات المسافرين", href: "#reviews" },
+    { name: "الرئيسية", href: "/#hero" },
+    { name: "عروض السفر", href: "/#packages" },
+    { name: "لماذا تختارنا", href: "/#why-choose-us" },
+    { name: "آراء عملائنا", href: "/#reviews" },
   ];
 
   const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود التواصل مع خدمة العملاء لطلب عرض سعر.";
@@ -32,7 +23,7 @@ export default function Footer() {
 
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12 relative z-10 text-right">
         {/* Grid Area */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 mb-16">
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Logo & Agency Info */}
           <div>
             <a 
@@ -58,25 +49,6 @@ export default function Footer() {
                 <span className="text-[10px] text-white/50">وزارة السياحة المصرية • ترخيص رقم ٢٠٩٥٤</span>
               </div>
             </div>
-          </div>
-
-          {/* Destination Links */}
-          <div>
-            <h3 className="text-base font-black text-brand-orange mb-6 border-r-2 border-brand-orange pr-3">
-              أشهر الباقات والوجهات
-            </h3>
-            <ul className="space-y-3.5">
-              {destinationsList.map((dest, idx) => (
-                <li key={idx}>
-                  <a
-                    href={dest.href}
-                    className="text-sm font-semibold text-white/70 hover:text-brand-orange hover:translate-x-[-4px] inline-block transition-all duration-200"
-                  >
-                    {dest.name}
-                  </a>
-                </li>
-              ))}
-            </ul>
           </div>
 
           {/* Quick Links */}
