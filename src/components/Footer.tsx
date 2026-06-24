@@ -1,7 +1,6 @@
 "use client";
 
-import React from "react";
-import { Plane, Phone, Mail, MapPin, ShieldAlert, Award, CreditCard, ShieldCheck } from "lucide-react";
+import { Phone, MapPin } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -14,7 +13,7 @@ export default function Footer() {
     { name: "آراء عملائنا", href: "/#reviews" },
   ];
 
-  const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود التواصل مع خدمة العملاء لطلب عرض سعر.";
+  // const waLink = "https://wa.me/201000961382?text=مرحباً لو كوست هوليدايز، أود التواصل مع خدمة العملاء لطلب عرض سعر.";
 
   return (
     <footer className="bg-[#0b1222] text-white pt-20 border-t border-white/5 relative overflow-hidden">
@@ -41,14 +40,6 @@ export default function Footer() {
             <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">
               الوكالة الأولى بمصر المتخصصة في تقديم أقوى باقات السفر الفاخرة والاقتصادية لتركيا وتونس. نجمع لك بين التكلفة الذكية، الطيران المباشر المريح، والفنادق الراقية لنوفر لك إجازة العمر بدون أعباء مالية.
             </p>
-            {/* Trust and License */}
-            <div className="flex items-center gap-2.5 bg-white/5 border border-white/10 rounded-xl p-3">
-              <ShieldCheck className="w-8 h-8 text-brand-orange shrink-0" />
-              <div className="flex flex-col">
-                <span className="text-xs font-bold text-white">مرخصين بالكامل</span>
-                <span className="text-[10px] text-white/50">وزارة السياحة المصرية • ترخيص رقم ٢٠٩٥٤</span>
-              </div>
-            </div>
           </div>
 
           {/* Quick Links */}
@@ -89,15 +80,6 @@ export default function Footer() {
                   className="text-sm font-semibold text-white/80 hover:text-brand-orange tracking-wider transition-colors"
                 >
                   +20 100 096 1382
-                </a>
-              </li>
-              <li className="flex items-center gap-3">
-                <Mail className="w-5 h-5 text-brand-orange shrink-0" />
-                <a
-                  href="mailto:info@lowcostholidays.com.eg"
-                  className="text-sm font-semibold text-white/80 hover:text-brand-orange transition-colors"
-                >
-                  info@lowcostholidays.com.eg
                 </a>
               </li>
             </ul>

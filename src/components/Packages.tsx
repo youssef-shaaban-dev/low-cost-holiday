@@ -119,30 +119,17 @@ export default function Packages() {
                 {/* Card Content */}
                 <div className="p-6 sm:p-8 flex flex-col grow justify-between">
                   <div>
-                    {/* Hotel star and duration */}
-                    <div className="flex items-center justify-between mb-3.5 text-xs text-brand-blue/60 font-bold">
+                    {/* Duration */}
+                    <div className="flex items-center mb-3.5 text-xs text-brand-blue/60 font-bold">
                       <span className="flex items-center gap-1 bg-brand-blue/5 px-2.5 py-1 rounded-md">
                         🕒 {pkg.duration}
                       </span>
-                      <div className="flex items-center gap-0.5 bg-yellow-500/10 text-yellow-600 px-2.5 py-1 rounded-md">
-                        <span className="font-extrabold">{pkg.hotelStars}*</span>
-                        <div className="flex text-yellow-500">
-                          {Array.from({ length: pkg.hotelStars }).map((_, i) => (
-                            <Star key={i} className="w-3 h-3 fill-current" />
-                          ))}
-                        </div>
-                      </div>
                     </div>
 
                     {/* Package Title */}
-                    <h3 className="text-lg sm:text-xl font-black text-brand-blue mb-2.5 leading-snug group-hover:text-brand-orange transition-colors">
+                    <h3 className="text-lg sm:text-xl font-black text-brand-blue mb-5 leading-snug group-hover:text-brand-orange transition-colors">
                       {pkg.title}
                     </h3>
-
-                    {/* Hotel Details */}
-                    <p className="text-xs text-brand-blue/70 mb-5 font-semibold bg-brand-offwhite px-3 py-2 rounded-xl border border-brand-blue/5">
-                      🏨 {pkg.hotelName}
-                    </p>
 
                     {/* Inclusions Row */}
                     <div className="border-t border-brand-blue/5 pt-4 mb-6">

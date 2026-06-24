@@ -43,7 +43,7 @@ export default function Header() {
         }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="flex items-center justify-between">
+          <div className="flex items-center justify-between relative">
             {/* Logo */}
             <Link
               href="/#hero" 
@@ -59,7 +59,7 @@ export default function Header() {
             </Link>
 
             {/* Desktop Navigation */}
-            <nav className="hidden md:flex items-center gap-8">
+            <nav className="hidden md:flex items-center gap-8 absolute left-1/2 transform -translate-x-1/2">
               {navLinks.map((link) => (
                 <Link
                   key={link.name}
@@ -71,18 +71,7 @@ export default function Header() {
               ))}
             </nav>
 
-            {/* CTA Button */}
-            <div className="hidden sm:block">
-              <a
-                href={waLink}
-                target="_blank"
-                rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-brand-orange hover:bg-brand-orange/90 text-white font-bold px-6 py-3 rounded-full shadow-lg shadow-brand-orange/30 transition-all duration-300 hover:scale-105 active:scale-95 text-sm"
-              >
-                <Phone className="w-4 h-4" />
-                <span>تواصل معنا</span>
-              </a>
-            </div>
+
 
             {/* Mobile menu button */}
             <div className="md:hidden">

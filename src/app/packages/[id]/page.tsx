@@ -1,7 +1,7 @@
 import { packages } from "../../../data/packages";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, Star, Plane, Bus, Compass, MessageSquare, CheckCircle2, Info } from "lucide-react";
+import { ChevronRight, Star, Plane, Bus, Compass, MessageSquare, CheckCircle2, Info, CalendarDays, Building2, Users, Baby } from "lucide-react";
 import Image from "next/image";
 
 export function generateStaticParams() {
@@ -50,15 +50,11 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
           <span className="bg-brand-orange text-white text-xs font-black px-3.5 py-1.5 rounded-full shadow-sm">
             {pkg.badge}
           </span>
-          <span className="bg-brand-blue/5 text-brand-blue text-xs font-bold px-3.5 py-1.5 rounded-full">
+          <span className="bg-brand-blue/5 text-brand-blue text-xs font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1">
             📍 {pkg.city}
           </span>
           <span className="bg-brand-blue/5 text-brand-blue text-xs font-bold px-3.5 py-1.5 rounded-full flex items-center gap-1">
             🕒 {pkg.duration}
-          </span>
-          <span className="bg-amber-500/10 text-amber-600 text-xs font-extrabold px-3.5 py-1.5 rounded-full flex items-center gap-1">
-            <Star className="w-3.5 h-3.5 fill-amber-500 text-amber-500" />
-            4.9 (48 تقييم)
           </span>
         </div>
 
@@ -123,6 +119,64 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
                   "اكتشف جمال تونس الخضراء وسحر شواطئها الفيروزية وتاريخها الممتد لآلاف السنين. تأخذك هذه الرحلة الاستثنائية في جولات حرة ومنظمة بين المعالم التاريخية كقرطاج وسيدي بوسعيد الأسطورية والأسواق التقليدية النابضة بالحياة، مع خدمات انتقال ممتازة لتستمتع بجوهرة البحر الأبيض المتوسط."
                 )}
               </p>
+            </section>
+
+            {/* Offer Details Card */}
+            <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
+              <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">
+                تفاصيل العرض
+              </h2>
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
+                    <CalendarDays className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">تاريخ السفر المتاح</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.availableTravelDate}</span>
+                  </div>
+                </div>
+                
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
+                    <Plane className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">اسم شركة الطيران</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.airlineName}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
+                    <Building2 className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">نظام الإقامة</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.accommodationBasis}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
+                    <Users className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">السعر للفرد</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.isPricePerPersonDoubleRoom ? "في غرفة مزدوجة" : "غير محدد"}</span>
+                  </div>
+                </div>
+
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5 sm:col-span-2">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
+                    <Baby className="w-5 h-5" />
+                  </div>
+                  <div>
+                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">سعر الطفل</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.childPrice.toLocaleString("ar-EG")} ج.م</span>
+                  </div>
+                </div>
+              </div>
             </section>
 
             {/* Inclusions (Text Writing Style) */}

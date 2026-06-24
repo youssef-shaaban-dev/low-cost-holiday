@@ -17,6 +17,11 @@ export interface TravelPackage {
   image: string;
   images: string[];
   whatsappMessage: string;
+  availableTravelDate: string;
+  airlineName: string;
+  accommodationBasis: string;
+  isPricePerPersonDoubleRoom: boolean;
+  childPrice: number;
 }
 
 export const packages: TravelPackage[] = [
@@ -42,7 +47,12 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1541432901042-2d8bd64b4a9b?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1543872084-c7bd3822856f?auto=format&fit=crop&w=600&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة إسطنبول الكلاسيكية (24,500 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة إسطنبول الكلاسيكية (24,500 جنيه)",
+    availableTravelDate: "كل يوم أحد وخميس",
+    airlineName: "مصر للطيران / النيل للطيران",
+    accommodationBasis: "إفطار فقط",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 15500
   },
   {
     id: "antalya-beach",
@@ -66,7 +76,12 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1528127269322-539801943592?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1571003123894-1f0594d2b5d9?auto=format&fit=crop&w=600&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة شواطئ أنطاليا (29,900 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز رحلة شواطئ أنطاليا (29,900 جنيه)",
+    availableTravelDate: "رحلات أسبوعية كل ثلاثاء",
+    airlineName: "صن إكسبريس",
+    accommodationBasis: "شامل كلياً (فطار وغداء وعشاء ومشروبات)",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 18900
   },
   {
     id: "turkey-combo",
@@ -90,7 +105,12 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=800&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز العرض الثنائي إسطنبول وأنطاليا معاً (34,800 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار وحجز العرض الثنائي إسطنبول وأنطاليا معاً (34,800 جنيه)",
+    availableTravelDate: "متاح طوال شهر يوليو وأغسطس",
+    airlineName: "الخطوط الجوية التركية",
+    accommodationBasis: "إفطار فقط",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 22000
   },
   {
     id: "tunis-hammamet",
@@ -114,7 +134,12 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1534447677768-be436bb09401?auto=format&fit=crop&w=800&q=80",
       "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=600&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة تونس الخضراء وياسمين الحمامات (21,900 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة تونس الخضراء وياسمين الحمامات (21,900 جنيه)",
+    availableTravelDate: "يوم 15 و 28 من كل شهر",
+    airlineName: "الخطوط التونسية",
+    accommodationBasis: "نصف إقامة (فطار وعشاء)",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 14500
   },
   {
     id: "hammamet-luxury",
@@ -138,7 +163,12 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1507525428034-b723cf961d3e?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1568292342316-60aa3d36f4b3?auto=format&fit=crop&w=600&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار عن رحلة استجمام الحمامات الفاخر (26,400 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود الاستفسار عن رحلة استجمام الحمامات الفاخر (26,400 جنيه)",
+    availableTravelDate: "كل يوم سبت",
+    airlineName: "مصر للطيران",
+    accommodationBasis: "شامل كلياً",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 16900
   },
   {
     id: "tunis-discovery",
@@ -162,6 +192,11 @@ export const packages: TravelPackage[] = [
       "https://images.unsplash.com/photo-1516026672322-bc52d61a55d5?auto=format&fit=crop&w=600&q=80",
       "https://images.unsplash.com/photo-1605371924599-2d0365da1ae0?auto=format&fit=crop&w=600&q=80"
     ],
-    whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة اكتشاف قرطاج وسيدي بوسعيد الأسطورية (19,800 جنيه)"
+    whatsappMessage: "مرحباً لو كوست هوليدايز، أود حجز رحلة اكتشاف قرطاج وسيدي بوسعيد الأسطورية (19,800 جنيه)",
+    availableTravelDate: "يومياً حسب الإمكانية",
+    airlineName: "الخطوط التونسية",
+    accommodationBasis: "إفطار فقط",
+    isPricePerPersonDoubleRoom: true,
+    childPrice: 12500
   }
 ];

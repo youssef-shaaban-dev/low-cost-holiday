@@ -65,7 +65,7 @@ export default function Hero() {
           >
             سافر من القاهرة إلى <span className="text-brand-orange">تركيا وتونس</span>
             <br />
-            بأرخص الأسعار وطيران مباشر!
+            الأسعار وطيران مباشر!
           </motion.h1>
 
           {/* Subheading */}
