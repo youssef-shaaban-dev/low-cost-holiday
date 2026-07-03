@@ -1,27 +1,96 @@
-import { packages } from "../../../data/packages";
+import { createServer } from "@/lib/supabase-server";
 import { notFound } from "next/navigation";
 import Link from "next/link";
-import { ChevronRight, Star, Plane, Bus, Compass, MessageSquare, CheckCircle2, Info, CalendarDays, Building2, Users, Baby } from "lucide-react";
+import {
+  MessageSquare,
+  CheckCircle2,
+  Info,
+  CalendarDays,
+  Baby,
+  Plane,
+  Hotel,
+  Users,
+} from "lucide-react";
 import Image from "next/image";
 
-export function generateStaticParams() {
-  return packages.map((p) => ({
-    id: p.id,
-  }));
+// Fetch from Supabase
+async function getPackage(id: string) {
+  try {
+    const supabase = await createServer();
+    const { data } = await supabase
+      .from("packages")
+      .select("*")
+      .eq("id", id)
+      .single();
+
+    if (data) {
+      return {
+        id: data.id,
+        title: data.title,
+        destination: data.destination,
+        city: data.city,
+        duration: data.duration,
+        price: data.price,
+        childPrice: data.child_price,
+        inclusions: {
+          flight: data.flight,
+          hotel: data.hotel,
+          transfers: data.transfers,
+          guide: data.guide,
+        },
+        badge: data.badge,
+        image: data.image,
+        images: data.images ?? [],
+        whatsappMessage: data.whatsapp_message,
+        availableTravelDate: data.available_travel_date,
+        description: data.description || "",
+        airline: data.airline,
+        accommodationType: data.accommodation_type,
+        flightDetails: data.flight_details,
+        transfersDetails: data.transfers_details,
+        guideDetails: data.guide_details,
+        guidelines: data.guidelines,
+      };
+    }
+  } catch {
+    // Return null if not found or error
+  }
+  return null;
 }
 
-export default async function PackageDetails({ params }: { params: Promise<{ id: string }> }) {
+async function getPhone(): Promise<string> {
+  try {
+    const supabase = await createServer();
+    const { data } = await supabase
+      .from("site_settings")
+      .select("value")
+      .eq("key", "whatsapp_phone")
+      .single();
+    return data?.value ?? "201000961382";
+  } catch {
+    return "201000961382";
+  }
+}
+
+export const dynamic = "force-dynamic";
+
+export default async function PackageDetails({
+  params,
+}: {
+  params: Promise<{ id: string }>;
+}) {
   const resolvedParams = await params;
-  const pkg = packages.find((p) => p.id === resolvedParams.id);
+  const pkg = await getPackage(resolvedParams.id);
+  const phone = await getPhone();
 
   if (!pkg) {
     notFound();
   }
 
-  const waLink = `https://wa.me/201000961382?text=${encodeURIComponent(pkg.whatsappMessage)}`;
-
+  const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(pkg.whatsappMessage)}`;
   const isTurkey = pkg.destination === "turkey";
-  const destinationText = isTurkey ? "تركيا 🇹🇷" : "تونس 🇹🇳";
+  const isArmenia = pkg.destination === "armenia";
+  const destinationText = isTurkey ? "تركيا 🇹🇷" : isArmenia ? "أرمينيا 🇦🇲" : "تونس 🇹🇳";
 
   return (
     <div className="min-h-screen bg-brand-offwhite pb-24 font-cairo pt-24 sm:pt-28">
@@ -36,9 +105,7 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
             عروض السفر
           </Link>
           <span className="text-brand-blue/30 font-light">/</span>
-          <span className="text-brand-blue/70">
-            {destinationText}
-          </span>
+          <span className="text-brand-blue/70">{destinationText}</span>
           <span className="text-brand-blue/30 font-light">/</span>
           <span className="text-brand-orange font-extrabold">{pkg.city}</span>
         </nav>
@@ -63,10 +130,9 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
         </h1>
       </div>
 
-      {/* Image Gallery Grid (1 Large + 2 Stacked Small) */}
+      {/* Image Gallery Grid */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 mb-10">
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-          {/* Main Large Image */}
           <div className="md:col-span-2 relative h-[250px] sm:h-[350px] md:h-[450px] overflow-hidden rounded-3xl group shadow-md border border-brand-blue/5">
             <Image
               src={pkg.images[0] || pkg.image}
@@ -77,8 +143,6 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
               priority
             />
           </div>
-
-          {/* Stacked Smaller Images */}
           <div className="flex md:flex-col gap-4 h-auto md:h-[450px]">
             <div className="flex-1 relative h-[120px] sm:h-[160px] md:h-[calc(50%-8px)] overflow-hidden rounded-2xl group shadow-sm border border-brand-blue/5">
               <Image
@@ -102,84 +166,74 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
         </div>
       </div>
 
-      {/* Content Columns Layout */}
+      {/* Content Columns */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-
-          {/* Main Info Column */}
+          {/* Main Info */}
           <div className="lg:col-span-2 space-y-8">
-
-            {/* Trip Overview Card */}
+            {/* Overview */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-4">نظرة عامة على الرحلة</h2>
-              <p className="text-brand-blue/80 text-base font-semibold leading-relaxed">
-                {isTurkey ? (
-                  "استكشف سحر تركيا حيث يلتقي الشرق بالغرب في مزيج مذهل من التاريخ العريق والطبيعة الساحرة. نوفر لك في هذه الباقة تجربة سفر متكاملة ومثيرة تشمل تذاكر الطيران، والانتقالات المريحة، والزيارات السياحية الاستثنائية مع دعم متواصل طوال فترة إقامتك لضمان قضاء عطلة مميزة لا تُنسى مع عائلتك أو أصدقائك."
-                ) : (
-                  "اكتشف جمال تونس الخضراء وسحر شواطئها الفيروزية وتاريخها الممتد لآلاف السنين. تأخذك هذه الرحلة الاستثنائية في جولات حرة ومنظمة بين المعالم التاريخية كقرطاج وسيدي بوسعيد الأسطورية والأسواق التقليدية النابضة بالحياة، مع خدمات انتقال ممتازة لتستمتع بجوهرة البحر الأبيض المتوسط."
-                )}
+              <p className="text-brand-blue/80 text-base font-semibold leading-relaxed whitespace-pre-line">
+                {pkg.description || (isTurkey
+                  ? "استكشف سحر تركيا حيث يلتقي الشرق بالغرب في مزيج مذهل من التاريخ العريق والطبيعة الساحرة. نوفر لك في هذه الباقة تجربة سفر متكاملة ومثيرة تشمل تذاكر الطيران، والانتقالات المريحة، والزيارات السياحية الاستثنائية مع دعم متواصل طوال فترة إقامتك لضمان قضاء عطلة مميزة لا تُنسى مع عائلتك أو أصدقائك."
+                  : isArmenia
+                  ? "استكشف جمال أرمينيا وتاريخها الحضاري العريق، من أديرتها القديمة إلى مناظرها الطبيعية الخلابة. نوفر لك رحلة متكاملة تشمل الطيران والإقامة والجولات السياحية مع مرشد متمرس لاكتشاف جواهر القوقاز الخفية."
+                  : "اكتشف جمال تونس الخضراء وسحر شواطئها الفيروزية وتاريخها الممتد لآلاف السنين. تأخذك هذه الرحلة الاستثنائية في جولات حرة ومنظمة بين المعالم التاريخية كقرطاج وسيدي بوسعيد الأسطورية والأسواق التقليدية النابضة بالحياة، مع خدمات انتقال ممتازة لتستمتع بجوهرة البحر الأبيض المتوسط.")}
               </p>
             </section>
 
-            {/* Offer Details Card */}
+            {/* Details */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">
                 تفاصيل العرض
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
-                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
-                    <CalendarDays className="w-5 h-5" />
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 mb-6">
+                {pkg.airline && (
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                    <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange"><Plane className="w-5 h-5" /></div>
+                    <div>
+                      <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">اسم شركة الطيران</span>
+                      <span className="block text-sm font-extrabold text-brand-blue">{pkg.airline}</span>
+                    </div>
                   </div>
+                )}
+                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange"><CalendarDays className="w-5 h-5" /></div>
                   <div>
                     <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">تاريخ السفر المتاح</span>
                     <span className="block text-sm font-extrabold text-brand-blue">{pkg.availableTravelDate}</span>
                   </div>
                 </div>
-
+                {pkg.accommodationType && (
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                    <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange"><Hotel className="w-5 h-5" /></div>
+                    <div>
+                      <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">نظام الإقامة</span>
+                      <span className="block text-sm font-extrabold text-brand-blue">{pkg.accommodationType}</span>
+                    </div>
+                  </div>
+                )}
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
-                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
-                    <Plane className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">اسم شركة الطيران</span>
-                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.airlineName}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
-                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
-                    <Building2 className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">نظام الإقامة</span>
-                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.accommodationBasis}</span>
-                  </div>
-                </div>
-
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
-                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
-                    <Users className="w-5 h-5" />
-                  </div>
+                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange"><Users className="w-5 h-5" /></div>
                   <div>
                     <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">السعر للفرد</span>
-                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.isPricePerPersonDoubleRoom ? "في غرفة مزدوجة" : "غير محدد"}</span>
+                    <span className="block text-sm font-extrabold text-brand-blue">في غرفة مزدوجة</span>
                   </div>
                 </div>
-
-                <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5 sm:col-span-2">
-                  <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
-                    <Baby className="w-5 h-5" />
+                {pkg.childPrice > 0 && (
+                  <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
+                    <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange"><Baby className="w-5 h-5" /></div>
+                    <div>
+                      <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">سعر الطفل</span>
+                      <span className="block text-sm font-extrabold text-brand-blue">{pkg.childPrice.toLocaleString("ar-EG")} ج.م</span>
+                    </div>
                   </div>
-                  <div>
-                    <span className="block text-[10px] sm:text-xs text-brand-blue/50 font-bold mb-0.5">سعر الطفل</span>
-                    <span className="block text-sm font-extrabold text-brand-blue">{pkg.childPrice.toLocaleString("ar-EG")} ج.م</span>
-                  </div>
-                </div>
+                )}
               </div>
             </section>
 
-            {/* Inclusions (Text Writing Style) */}
+            {/* Inclusions */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">
                 الباقة تشمل ما يلي
@@ -192,13 +246,12 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
                     </div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">تذاكر طيران ذهاب وعودة</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed">
-                        تذاكر الطيران الدولي المباشر ذهاب وعودة من مصر، شاملة كافة الضرائب ورسوم المطارات مع الأوزان والحقائب المقررة.
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
+                        {pkg.flightDetails}
                       </p>
                     </div>
                   </div>
                 )}
-
                 {pkg.inclusions.transfers && (
                   <div className="flex items-start gap-4">
                     <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5">
@@ -206,13 +259,12 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
                     </div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">الانتقالات الداخلية الكاملة</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed">
-                        الاستقبال والترحيب في المطار عند الوصول والتوصيل للفندق، والنقل عند العودة بواسطة حافلات سياحية حديثة ومكيفة ومريحة.
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
+                        {pkg.transfersDetails}
                       </p>
                     </div>
                   </div>
                 )}
-
                 {pkg.inclusions.guide && (
                   <div className="flex items-start gap-4">
                     <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5">
@@ -220,8 +272,8 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
                     </div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">جولات سياحية ومعالم البرنامج</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed">
-                        برنامج جولات سياحية منظم وممتع لزيارة أشهر المعالم التاريخية والطبيعية والترفيهية المذكورة في خطة الرحلة بمرافقة مرشد سياحي مؤهل.
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
+                        {pkg.guideDetails}
                       </p>
                     </div>
                   </div>
@@ -229,22 +281,24 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
               </div>
             </section>
 
-            {/* Travel Guidelines */}
-            <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
-              <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-4 flex items-center gap-2">
-                <Info className="w-6 h-6 text-brand-orange" />
-                إرشادات هامة قبل السفر
-              </h2>
-              <ul className="list-disc list-inside space-y-3 text-xs sm:text-sm text-brand-blue/75 font-semibold leading-relaxed pr-2">
-                <li>يرجى التأكد من أن جواز سفرك سارٍ لمدة لا تقل عن ٦ أشهر من تاريخ السفر المقرر.</li>
-                <li>الحصول على التأشيرة والموافقات الأمنية يختلف حسب جنسية المسافر والوجهة.</li>
-                <li>تخضع مواعيد رحلات الطيران للتأكيد النهائي والتغييرات الطفيفة من قبل شركات الطيران قبل المغادرة بـ ٤٨ ساعة.</li>
-                <li>يتواجد مندوبونا في المطارات لتسهيل إجراءات استقبالكم وانتقالاتكم بسلاسة.</li>
-              </ul>
-            </section>
+            {/* Guidelines */}
+            {pkg.guidelines && (
+              <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
+                <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5 flex items-center gap-2">
+                  <Info className="w-6 h-6 text-brand-orange" /> إرشادات هامة قبل السفر
+                </h2>
+                <ul className="space-y-4">
+                  {pkg.guidelines.split("\n").filter((line: string) => line.trim() !== "").map((line: string, i: number) => (
+                    <li key={i} className="flex gap-3 text-sm text-brand-blue/80 font-bold leading-relaxed">
+                      <span className="text-brand-orange mt-1.5">•</span> {line.trim()}
+                    </li>
+                  ))}
+                </ul>
+              </section>
+            )}
           </div>
 
-          {/* Pricing & CTA Card (Sticky Desktop) */}
+          {/* Sticky Pricing Card */}
           <div className="lg:col-span-1">
             <div className="bg-white p-6 rounded-3xl shadow-xl shadow-brand-blue/5 border-2 border-brand-orange/20 lg:sticky lg:top-24">
               <h3 className="text-brand-blue/60 text-sm font-bold mb-2 uppercase">إجمالي السعر للشخص يبدأ من</h3>
@@ -287,11 +341,10 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
               </a>
 
               <p className="text-center text-xs text-brand-blue/50 mt-4 font-bold">
-                تواصل عبر واتساب للأستفسارات والحجز.
+                تواصل عبر واتساب للاستفسارات والحجز.
               </p>
             </div>
           </div>
-
         </div>
       </div>
 

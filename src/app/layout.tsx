@@ -53,6 +53,8 @@ export const metadata: Metadata = {
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import FloatingWA from "@/components/FloatingWA";
+import QueryProvider from "@/providers/QueryProvider";
+import ConditionalShell from "@/components/ConditionalShell";
 
 export default function RootLayout({
   children,
@@ -67,10 +69,9 @@ export default function RootLayout({
       data-scroll-behavior="smooth"
     >
       <body className="min-h-full flex flex-col bg-brand-offwhite text-brand-blue font-cairo overflow-x-hidden selection:bg-brand-orange selection:text-white">
-        <Header />
-        <main className="grow flex flex-col">{children}</main>
-        <Footer />
-        <FloatingWA />
+        <QueryProvider>
+          <ConditionalShell>{children}</ConditionalShell>
+        </QueryProvider>
       </body>
     </html>
   );
