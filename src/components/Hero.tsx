@@ -6,17 +6,17 @@ import Link from "next/link";
 
 const sliderImages = [
   {
-    url: "https://images.unsplash.com/photo-1524231757912-21f4fe3a7200?auto=format&fit=crop&w=1920&q=80",
+    url: "/Armenia.webp",
     title: "إسطنبول الساحرة",
     caption: "عبق التاريخ وروعة المضيق",
   },
   {
-    url: "https://images.unsplash.com/photo-1542051841857-5f90071e7989?auto=format&fit=crop&w=1920&q=80",
+    url: "/Istanbul.webp",
     title: "شواطئ أنطاليا الذهبية",
     caption: "حيث تلتقي الجبال بمياه البحر المتوسط الفيروزية",
   },
   {
-    url: "https://images.unsplash.com/photo-1589182337358-2cb63acfc9c5?auto=format&fit=crop&w=1920&q=80",
+    url: "/tunisia.webp",
     title: "سيدي بوسعيد - تونس",
     caption: "سحر اللونين الأبيض والأزرق في لؤلؤة قرطاج",
   },
