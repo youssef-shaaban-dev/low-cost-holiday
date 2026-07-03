@@ -1,6 +1,6 @@
 "use client";
 
-import { Plane, Hotel, Bus, Compass } from "lucide-react";
+import { Plane, Bus, Compass } from "lucide-react";
 import { PackageFormData } from "../../PackageForm";
 
 interface Props {
@@ -18,7 +18,7 @@ export default function InclusionsSection({ form, set }: Props) {
         <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
           {[
             { key: "flight" as const, label: "طيران", icon: <Plane className="w-4 h-4" /> },
-            { key: "hotel_inclusion" as const, label: "فندق", icon: <Hotel className="w-4 h-4" /> },
+        
             { key: "transfers" as const, label: "انتقالات", icon: <Bus className="w-4 h-4" /> },
             { key: "guide" as const, label: "جولات سياحية", icon: <Compass className="w-4 h-4" /> },
           ].map(({ key, label, icon }) => (
