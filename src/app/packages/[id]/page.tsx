@@ -77,7 +77,7 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
               priority
             />
           </div>
-          
+
           {/* Stacked Smaller Images */}
           <div className="flex md:flex-col gap-4 h-auto md:h-[450px]">
             <div className="flex-1 relative h-[120px] sm:h-[160px] md:h-[calc(50%-8px)] overflow-hidden rounded-2xl group shadow-sm border border-brand-blue/5">
@@ -105,10 +105,10 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
       {/* Content Columns Layout */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
-          
+
           {/* Main Info Column */}
           <div className="lg:col-span-2 space-y-8">
-            
+
             {/* Trip Overview Card */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-4">نظرة عامة على الرحلة</h2>
@@ -136,7 +136,7 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
                     <span className="block text-sm font-extrabold text-brand-blue">{pkg.availableTravelDate}</span>
                   </div>
                 </div>
-                
+
                 <div className="flex items-center gap-3 p-4 rounded-xl bg-brand-offwhite/50 border border-brand-blue/5">
                   <div className="bg-brand-orange/10 p-2 rounded-lg text-brand-orange">
                     <Plane className="w-5 h-5" />
@@ -287,7 +287,7 @@ export default async function PackageDetails({ params }: { params: Promise<{ id:
               </a>
 
               <p className="text-center text-xs text-brand-blue/50 mt-4 font-bold">
-                تواصل معنا مباشرة عبر واتساب لتأكيد الحجز والاستفسارات
+                تواصل عبر واتساب للأستفسارات والحجز.
               </p>
             </div>
           </div>

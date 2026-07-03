@@ -1,6 +1,6 @@
 "use client";
 
-import { Phone, MapPin } from "lucide-react";
+import { Globe } from "lucide-react";
 import Image from "next/image";
 
 export default function Footer() {
@@ -25,20 +25,22 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-12 mb-16">
           {/* Logo & Agency Info */}
           <div>
-            <a 
-              href="#hero" 
+            <a
+              href="#hero"
               className="flex items-center gap-2 group mb-6 self-start"
             >
-              <Image 
-                src="/white-logo.png" 
-                alt="Low Cost Holidays Logo" 
+              <Image
+                src="/white-logo.png"
+                alt="Low Cost Holidays Logo"
                 width={200}
                 height={200}
-                className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105" 
+                className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </a>
             <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">
-              الوكالة الأولى بمصر المتخصصة في تقديم أقوى باقات السفر الفاخرة والاقتصادية لتركيا وتونس. نجمع لك بين التكلفة الذكية، الطيران المباشر المريح، والفنادق الراقية لنوفر لك إجازة العمر بدون أعباء مالية.
+              لوكوست هوليدايز متخصصة في تقديم باقات سفر فاخرة واقتصادية إلى تركيا وتونس وأرمينيا وغيرها من الوجهات السياحية الدولية، صُممت لتناسب مختلف الميزانيات. لتجمع لك بين الأسعار الذكية، رحلات الطيران المريحة، الفنادق المختارة بعناية، والبرامج السياحية المتكاملة، لنمنحك رحلات واجازات طيران مباشر من مصر على مدار العام.
+
+              لوكوست هوليدايز علامة تجارية تابعة للشركة المصرية العالمية للسياحة - ترخيص سياحة (أ) رقم 789.
             </p>
           </div>
 
@@ -64,23 +66,14 @@ export default function Footer() {
           {/* Contact Details */}
           <div>
             <h3 className="text-base font-black text-brand-orange mb-6 border-r-2 border-brand-orange pr-3">
-              تواصل معنا بمصر
+              لوكوست هوليدايز
             </h3>
             <ul className="space-y-4">
               <li className="flex items-start gap-3">
-                <MapPin className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
+                <Globe className="w-5 h-5 text-brand-orange shrink-0 mt-0.5" />
                 <span className="text-sm font-semibold text-white/80">
-                  برج أركاديا، الدور الرابع، شارع التسعين الشمالي، التجمع الخامس، القاهرة، مصر
+                  لوكوست هوليدايز علامة تجارية تابعة للشركة المصرية العالمية للسياحة - ترخيص سياحة (أ) رقم 789.
                 </span>
-              </li>
-              <li className="flex items-center gap-3">
-                <Phone className="w-5 h-5 text-brand-orange shrink-0" />
-                <a
-                  href="tel:+201000961382"
-                  className="text-sm font-semibold text-white/80 hover:text-brand-orange tracking-wider transition-colors"
-                >
-                  +20 100 096 1382
-                </a>
               </li>
             </ul>
           </div>
@@ -88,11 +81,10 @@ export default function Footer() {
 
 
         {/* Copyright Area */}
-        <div className="border-t border-white/5 pt-8 text-center text-xs text-white/40 font-semibold">
-          <p>© {currentYear} لو كوست هوليدايز مصر. جميع الحقوق محفوظة لشركة Low Cost Holidays.</p>
-          <p className="mt-1">
-            مصمم بكل حب للشعب المصري 🇪🇬 • الأسعار مطبقة بالجنيه المصري (EGP) وشاملة الضرائب والرسوم الأساسية.
-          </p>
+        <div className="border-t border-white/5 pt-8 text-center text-xs text-white/60 font-semibold">
+          © 2026 لوكوست هوليدايز - جميع الحقوق محفوظة. يُحظر تماماً الاستخدام غير المصرح به، بما في ذلك تدريب نماذج الذكاء الاصطناعي، أو إعادة الإنتاج، أو الاستغلال التجاري.
+
+          صُنع بكل فخر في مصر بحب ❤️  <a href="https://mrco-egypt.com" target="_blank" rel="noopener noreferrer" className="underline text-brand-orange">تم تصميم وتطوير الموقع من خلال شركة ميركو ايجيبت</a>
         </div>
       </div>
     </footer>

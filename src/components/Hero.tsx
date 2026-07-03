@@ -1,8 +1,8 @@
 "use client";
 
 import { useState, useEffect } from "react";
-import { Calendar, ShieldCheck, Star } from "lucide-react";
 import { motion, AnimatePresence } from "framer-motion";
+import Link from "next/link";
 
 const sliderImages = [
   {
@@ -61,11 +61,13 @@ export default function Hero() {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.8, delay: 0.2 }}
-            className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight sm:leading-none max-w-4xl mb-6"
+            className="text-4xl sm:text-5xl md:text-6xl font-black leading-tight max-w-4xl mb-6"
           >
-            سافر من القاهرة إلى <span className="text-brand-orange">تركيا وتونس</span>
+            سافر من القاهرة إلى
             <br />
-            الأسعار وطيران مباشر!
+            <span className="text-brand-orange pt-2 mb-2">أرمينيا , تركيا وتونس الجميلة</span>
+            <br />
+           طيران مباشر بأفضل الأسعار فى مصر.
           </motion.h1>
 
           {/* Subheading */}
@@ -75,10 +77,13 @@ export default function Hero() {
             transition={{ duration: 0.8, delay: 0.4 }}
             className="text-lg sm:text-xl text-white/80 max-w-2xl mb-10 leading-relaxed font-medium"
           >
-            استمتع بأقوى باقات السفر المتكاملة (طيران مباشر + فنادق راقية 4* و 5* + انتقالات + جولات سياحية). احجز الآن بأقل مقدم والباقي قبل السفر!
+            استمتع بأقوى باقات السفر المتكاملة (طيران مباشر + انتقالات + جولات سياحية).
           </motion.p>
-
-
+          <Link href="https://wa.me/201000961382?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20travel%20packages">
+            <button className="px-8 py-4 bg-brand-orange text-white rounded-xl font-black shadow-lg hover:bg-brand-blue/70  hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
+              احجز الآن
+            </button>
+          </Link>
         </div>
       </div>
     </section>

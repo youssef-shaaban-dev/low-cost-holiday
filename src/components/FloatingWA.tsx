@@ -23,7 +23,7 @@ export default function FloatingWA() {
   if (!isVisible) return null;
 
   return (
-    <div className="fixed bottom-6 right-6 z-55 flex flex-col items-end gap-3 group">
+    <div className="fixed bottom-6 -right-24 z-55 flex flex-col items-end gap-3 group">
       {/* Floating tooltip */}
       <div className="bg-brand-blue/95 text-white text-xs font-black px-4 py-2.5 rounded-xl shadow-xl border border-white/10 opacity-0 transform translate-y-2 pointer-events-none transition-all duration-300 group-hover:opacity-100 group-hover:translate-y-0 text-right whitespace-nowrap">
         تحدث معنا الآن عبر الواتساب! 💬

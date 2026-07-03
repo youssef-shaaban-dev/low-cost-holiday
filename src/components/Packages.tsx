@@ -34,10 +34,10 @@ export default function Packages() {
             <span>عروض السفر الحالية</span>
           </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black text-brand-blue leading-tight mb-4">
-            باقات سفر متكاملة <span className="text-brand-orange">بأفضل سعر بمصر</span>
+            باقات سفر متكاملة <span className="text-brand-orange">للأفراد والعائلات</span>
           </h2>
           <p className="text-base sm:text-lg text-brand-blue/70">
-            تصفح باقات السفر الحصرية لتركيا وتونس. تشمل الرحلات الطيران المباشر، الإقامة الفندقية الممتازة، الانتقالات والجولات مع مرشد سياحي مؤهل.
+           تصفح باقات السفر والرحلات شاملة الطيران مباشر، الإقامة الفندقية الممتازة، الانتقالات والجولات السياحية.
           </p>
         </div>
 

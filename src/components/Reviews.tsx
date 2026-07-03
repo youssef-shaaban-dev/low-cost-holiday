@@ -1,51 +1,41 @@
 "use client";
-
-import React from "react";
 import { Star, Quote, Heart, MapPin } from "lucide-react";
 import { motion } from "framer-motion";
 
 interface Testimonial {
   name: string;
-  role: string;
   location: string;
   trip: string;
   rating: number;
   content: string;
   date: string;
-  avatar: string;
 }
 
 export default function Reviews() {
   const testimonials: Testimonial[] = [
     {
-      name: "أ. أحمد عبد الرحمن وعائلته",
-      role: "موظف بشركة اتصالات",
-      location: "القاهرة الجديدة",
+      name: "أحمد عكاشة",
+      location: "اسطنبول",
       trip: "رحلة إسطنبول وأنطاليا معاً",
       rating: 5,
       content: "بجد تجربة فوق الممتازة! كانت أول مرة نسافر مع لو كوست هوليدايز وكان عندنا قلق شوية من الأسعار الاقتصادية، لكن الخدمة كانت فوق الوصف. الفنادق كانت نظيفة جداً وموقعها ممتاز في تقسيم، وطيران النيل مباشر ومريح جداً. الانتقالات دقيقة بالدقيقة والمرشد كان قمة في الذوق والمعرفة. شكراً ليكم وإن شاء الله الرحلة الجاية معاكم لتونس.",
       date: "أبريل ٢٠٢٦",
-      avatar: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?auto=format&fit=crop&w=150&h=150&q=80",
     },
     {
-      name: "د. رانيا المهدي وزوجها",
-      role: "طبيبة أسنان",
-      location: "الإسكندرية",
+      name: "ايمان مبروك",
+      location: "تونس",
       trip: "شهر عسل في الحمامات (تونس)",
       rating: 5,
       content: "قضينا أسبوع في تونس والحمامات بجد كان ساحر بكل المقاييس. ضاحية سيدي بوسعيد تجنن والون الأبيض والأزرق مريح جداً. الفندق 5 نجوم في ياسمين الحمامات كان خدمة ملوكي والأكل كان رائع. السعر كان أقل بكتير من شركات تانية سألنا فيها. الواتساب بتاعهم بيرد بسرعة جداً وحلوا لينا إجراءات الفيزا التونسية في أسبوع واحد.",
       date: "مايو ٢٠٢٦",
-      avatar: "https://images.unsplash.com/photo-1494790108377-be9c29b29330?auto=format&fit=crop&w=150&h=150&q=80",
     },
     {
-      name: "م. كريم الشافعي",
-      role: "مهندس برمجيات",
-      location: "الجيزة",
+      name: "خالد الشامى",
+      location: "أرمينيا",
       trip: "رحلة إسطنبول الكلاسيكية",
       rating: 5,
       content: "رحلة ممتازة وقيمة عالية جداً مقابل السعر. أنا سافرت لوحدي وجمعت أصدقاء جداد في الجروب. البرنامج السياحي كان متوازن جداً ومش متعب، وزرنا كل المعالم الأساسية زي آيا صوفيا ورحلة اليخت في البوسفور. الفندق كان هادئ ومريح والفريق متعاون جداً وبيتابعنا لحظة بلحظة على جروب الواتساب المشترك.",
       date: "مارس ٢٠٢٦",
-      avatar: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=150&h=150&q=80",
     },
   ];
 
@@ -66,7 +56,7 @@ export default function Reviews() {
             قصص حقيقية من <span className="text-brand-orange">مسافرينا في مصر</span>
           </h2>
           <p className="text-base sm:text-lg text-brand-blue/70">
-            فخورون بثقة أكثر من ٥,٠٠٠ مسافر مصري اختاروا عروضنا الموفرة لزيارة تركيا وتونس. إليك بعض تجاربهم الحقيقية.
+            فخورون بثقة أكثر من ٥,٠٠٠ مسافر مصري اختاروا عروض الرحلات للدول المختلفة معانا.
           </p>
         </div>
 
@@ -102,14 +92,8 @@ export default function Reviews() {
 
               {/* User details */}
               <div className="border-t border-brand-blue/5 pt-5 mt-auto flex items-center gap-4 text-right">
-                <img
-                  src={test.avatar}
-                  alt={test.name}
-                  className="w-12 h-12 rounded-full object-cover border-2 border-brand-orange/30 shadow-sm"
-                />
                 <div className="flex flex-col">
-                  <span className="text-sm font-extrabold text-brand-blue">{test.name}</span>
-                  <span className="text-[11px] font-semibold text-brand-blue/50">{test.role} • {test.location}</span>
+                  <span className="text-sm font-extrabold text-brand-blue">{test.name} • {test.location}</span>
                   <div className="flex items-center gap-1 text-[10px] text-brand-orange font-bold mt-1 bg-brand-orange/5 px-2 py-0.5 rounded-md self-start">
                     <MapPin className="w-3 h-3" />
                     <span>{test.trip} ({test.date})</span>
