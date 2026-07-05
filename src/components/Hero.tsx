@@ -49,7 +49,7 @@ export default function Hero() {
           />
         </AnimatePresence>
         {/* Dark Gradient Overlay for optimal text contrast */}
-        <div className="absolute inset-0 bg-linear-to-t from-brand-blue via-brand-blue/60 to-brand-blue/30" />
+        <div className="absolute opacity-50 inset-0 bg-linear-to-t from-brand-blue via-brand-blue/60 to-brand-blue/30" />
       </div>
 
       {/* Content Area */}
@@ -65,9 +65,11 @@ export default function Hero() {
           >
             سافر من القاهرة إلى
             <br />
-            <span className="text-brand-orange pt-2 mb-2">أرمينيا , تركيا وتونس الجميلة</span>
+            <span className="text-brand-orange pt-2 mb-2">
+              تركيا، ألبانيا، أرمينيا وتونس الجميلة
+            </span>
             <br />
-           طيران مباشر بأفضل الأسعار فى مصر.
+            طيران مباشر بأفضل الأسعار فى مصر.
           </motion.h1>
 
           {/* Subheading */}
@@ -79,9 +81,9 @@ export default function Hero() {
           >
             استمتع بأقوى باقات السفر المتكاملة (طيران مباشر + انتقالات + جولات سياحية).
           </motion.p>
-          <Link href="https://wa.me/201000961382?text=Hello%2C%20I%20would%20like%20to%20inquire%20about%20your%20travel%20packages">
+          <Link href="/#packages">
             <button className="px-8 py-4 bg-brand-orange text-white rounded-xl font-black shadow-lg hover:bg-brand-blue/70  hover:shadow-xl transition-all duration-300 transform hover:scale-105 cursor-pointer">
-              احجز الآن
+              شاهد عروض الرحلات
             </button>
           </Link>
         </div>
