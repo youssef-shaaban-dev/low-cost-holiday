@@ -29,6 +29,7 @@ export default function AdminLoginPage() {
     if (error) {
       setError(error.message === "Invalid login credentials" ? "البريد الإلكتروني أو كلمة المرور غير صحيحة" : error.message);
     } else {
+      router.refresh();
       router.push("/admin");
     }
   }
