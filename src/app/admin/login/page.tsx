@@ -24,13 +24,11 @@ export default function AdminLoginPage() {
       password,
     });
 
-    setLoading(false);
-
     if (error) {
+      setLoading(false);
       setError(error.message === "Invalid login credentials" ? "البريد الإلكتروني أو كلمة المرور غير صحيحة" : error.message);
     } else {
-      router.refresh();
-      router.push("/admin");
+      window.location.href = "/admin";
     }
   }
 
