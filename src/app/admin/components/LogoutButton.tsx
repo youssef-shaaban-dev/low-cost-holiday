@@ -16,7 +16,8 @@ export default function LogoutButton() {
     setLoggingOut(true);
     await supabase.auth.signOut();
     queryClient.clear();
-    router.push("/admin/login");
+    queryClient.invalidateQueries();
+    router.replace("/admin/login");
   }
 
   return (
