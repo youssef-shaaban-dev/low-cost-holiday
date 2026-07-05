@@ -13,12 +13,23 @@ export default function LogoutButton() {
   const [loggingOut, setLoggingOut] = useState(false);
 
   async function handleLogout() {
-    setLoggingOut(true);
-    await supabase.auth.signOut();
-    queryClient.clear();
-    queryClient.invalidateQueries();
-    router.replace("/admin/login");
+   try {
+      setLoggingOut(true);
+      
+      await supabase.auth.signOut();
+      
+      queryClient.clear();
+      
+      router.refresh();
+      
+      router.replace("/admin/login");
+    } catch (error) {
+      console.error("Error logging out:", error);
+    } finally {
+      setLoggingOut(false);
+    }
   }
+  
 
   return (
     <button
