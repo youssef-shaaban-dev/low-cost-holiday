@@ -50,9 +50,7 @@ export const metadata: Metadata = {
   },
 };
 
-import Header from "@/components/Header";
-import Footer from "@/components/Footer";
-import FloatingWA from "@/components/FloatingWA";
+
 import QueryProvider from "@/providers/QueryProvider";
 import ConditionalShell from "@/components/ConditionalShell";
 

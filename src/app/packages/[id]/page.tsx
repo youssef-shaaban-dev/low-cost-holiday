@@ -93,7 +93,7 @@ export default async function PackageDetails({
   const destinationText = isTurkey ? "تركيا 🇹🇷" : isArmenia ? "أرمينيا 🇦🇲" : "تونس 🇹🇳";
 
   return (
-    <div className="min-h-screen bg-brand-offwhite pb-24 font-cairo pt-24 sm:pt-28">
+    <div className="min-h-screen bg-brand-offwhite py-36 md:py-46 font-cairo  ">
       {/* Breadcrumbs Navigation */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue/60 mb-6">

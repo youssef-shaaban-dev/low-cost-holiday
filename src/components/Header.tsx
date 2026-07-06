@@ -53,7 +53,7 @@ export default function Header() {
                 alt="Low Cost Holidays Logo"
                 width={200}
                 height={200}
-                className="h-34 sm:h-46 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-32 sm:h-40 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="eager"
               />
             </Link>
