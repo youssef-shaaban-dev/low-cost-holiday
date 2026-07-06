@@ -22,9 +22,9 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Brand */}
         <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-16 h-16 bg-[#5A9BD5]/20 rounded-xl flex items-center justify-center">
+            <Link href="/" target="_blank" className="w-16 h-16 bg-[#5A9BD5]/20 rounded-xl flex items-center justify-center">
               <Image src={"/logo.webp"} alt={"Low Cost Holidays Logo"} width={200} height={200} />
-            </div>
+            </Link>
             <div>
               <div className="text-white font-black text-sm leading-none">Low Cost</div>
               <div className="text-white/50 text-xs font-bold leading-none mt-0.5">Holidays Admin</div>
