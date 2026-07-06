@@ -29,6 +29,7 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             />
           </InputField>
         </div>
+        
         {mode === "new" && (
           <InputField label="معرّف الرحلة (ID) — يُستخدم في رابط الصفحة" id="id">
             <input
@@ -41,13 +42,19 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             />
           </InputField>
         )}
+
+        {/* حقل الوجهة - تم تحويله لحقل نصي بسيط */}
         <InputField label="الوجهة" id="destination">
-          <select id="destination" value={form.destination} onChange={(e) => set("destination", e.target.value)} className={inputCls}>
-            <option value="turkey">تركيا 🇹🇷</option>
-            <option value="tunisia">تونس 🇹🇳</option>
-            <option value="armenia">أرمينيا 🇦🇲</option>           
-          </select>
+          <input
+            id="destination"
+            required
+            value={form.destination}
+            onChange={(e) => set("destination", e.target.value)}
+            placeholder="مثال: تركيا"
+            className={inputCls}
+          />
         </InputField>
+
         <InputField label="المدينة" id="city">
           <input
             id="city"
@@ -58,6 +65,7 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             className={inputCls}
           />
         </InputField>
+
         <InputField label="مدة الرحلة" id="duration">
           <input
             id="duration"
@@ -68,6 +76,7 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             className={inputCls}
           />
         </InputField>
+
         <InputField label="البادج (الشارة)" id="badge">
           <select id="badge" value={form.badge} onChange={(e) => set("badge", e.target.value)} className={inputCls}>
             <option value="الأكثر مبيعاً">الأكثر مبيعاً</option>
@@ -76,6 +85,7 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             <option value="عائلي مميز">عائلي مميز</option>
           </select>
         </InputField>
+
         <InputField label="ترتيب العرض (الأرقام الصغيرة أولاً)" id="sort_order">
           <input
             id="sort_order"
@@ -87,6 +97,7 @@ export default function BasicInfoSection({ form, set, mode }: Props) {
             className={inputCls}
           />
         </InputField>
+
         <div className="flex items-center gap-3 md:col-span-2">
           <input
             type="checkbox"
