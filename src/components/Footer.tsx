@@ -30,11 +30,11 @@ export default function Footer() {
               className="flex items-center gap-2 group mb-6 self-start"
             >
               <Image
-                src="/white-logo.png"
+                src="/logo.webp"
                 alt="Low Cost Holidays Logo"
                 width={200}
                 height={200}
-                className="h-20 sm:h-24 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-34 sm:h-46 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
               />
             </a>
             <p className="text-sm text-white/60 leading-relaxed mb-6 font-medium">

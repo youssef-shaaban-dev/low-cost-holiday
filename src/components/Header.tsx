@@ -37,8 +37,8 @@ export default function Header() {
     <>
       <header
         className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${scrolled || !isHome
-            ? "bg-brand-blue/95 backdrop-blur-md shadow-lg py-3 border-b border-white/10"
-            : "bg-transparent py-5"
+          ? "bg-brand-blue/95 backdrop-blur-md shadow-lg py-3 border-b border-white/10"
+          : "bg-transparent py-5"
           }`}
       >
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -49,11 +49,11 @@ export default function Header() {
               className="flex items-center gap-2 group"
             >
               <Image
-                src="/white-logo.png"
+                src="/logo.webp"
                 alt="Low Cost Holidays Logo"
                 width={200}
                 height={200}
-                className="h-20 sm:h-22 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
+                className="h-34 sm:h-46 w-auto object-contain transition-transform duration-300 group-hover:scale-105"
                 loading="eager"
               />
             </Link>
@@ -100,7 +100,7 @@ export default function Header() {
             className="flex items-center gap-2"
           >
             <Image
-              src="/white-logo.png"
+              src="/logo.webp"
               alt="Low Cost Holidays Logo"
               width={160}
               height={160}

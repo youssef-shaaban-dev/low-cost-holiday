@@ -46,10 +46,6 @@ export default function WhyChooseUs() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
         {/* Section Header */}
         <div className="text-center max-w-3xl mx-auto mb-20 text-white">
-          <div className="inline-flex items-center gap-2 px-3 py-1 bg-white/5 border border-white/10 text-brand-orange rounded-full text-sm font-bold mb-4">
-            <Star className="w-4 h-4 fill-brand-orange" />
-            <span>مميزات لو كوست هوليدايز</span>
-          </div>
           <h2 className="text-3xl sm:text-4xl md:text-5xl font-black leading-tight mb-4">
             لماذا تختارنا لتنظيم <span className="text-brand-orange">رحلتك القادمة؟</span>
           </h2>
@@ -105,9 +101,9 @@ export default function WhyChooseUs() {
             href="https://wa.me/201000961382?text=مرحباً، أود الحصول على استشارة سفر مجانية لتركيا أو تونس."
             target="_blank"
             rel="noopener noreferrer"
-            className="bg-brand-blue hover:bg-brand-blue/90 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 shrink-0 text-sm sm:text-base"
+            className="bg-green-700 hover:bg-green-800 text-white font-extrabold px-8 py-4 rounded-2xl shadow-lg transition-all duration-300 hover:scale-105 active:scale-95 shrink-0 text-sm sm:text-base"
           >
-            تحدث مع مستشار السفر بالواتساب
+           تواصل معنا 
           </a>
         </motion.div>
       </div>

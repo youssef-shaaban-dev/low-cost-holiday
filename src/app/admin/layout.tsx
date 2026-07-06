@@ -4,6 +4,7 @@ import { usePathname, useRouter } from "next/navigation";
 import Link from "next/link";
 import { Package, Settings, Plane, LayoutDashboard } from "lucide-react";
 import LogoutButton from "./components/LogoutButton";
+import Image from "next/image";
 
 const navItems = [
   { href: "/admin", label: "الرئيسية", icon: LayoutDashboard, exact: true },
@@ -21,8 +22,8 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
         {/* Brand */}
         <div className="p-6 border-b border-white/10">
           <div className="flex items-center gap-3">
-            <div className="w-10 h-10 bg-[#5A9BD5]/20 rounded-xl flex items-center justify-center">
-              <Plane className="w-5 h-5 text-[#5A9BD5]" />
+            <div className="w-16 h-16 bg-[#5A9BD5]/20 rounded-xl flex items-center justify-center">
+              <Image src={"/logo.webp"} alt={"Low Cost Holidays Logo"} width={200} height={200} />
             </div>
             <div>
               <div className="text-white font-black text-sm leading-none">Low Cost</div>
@@ -42,11 +43,10 @@ export default function AdminLayout({ children }: { children: React.ReactNode })
               <Link
                 key={item.href}
                 href={item.href}
-                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${
-                  isActive
+                className={`flex items-center gap-3 px-4 py-3 rounded-xl font-bold text-sm transition-all duration-200 ${isActive
                     ? "bg-[#5A9BD5] text-white shadow-lg shadow-[#5A9BD5]/30"
                     : "text-white/60 hover:text-white hover:bg-white/10"
-                }`}
+                  }`}
               >
                 <Icon className="w-4.5 h-4.5 shrink-0" />
                 {item.label}
