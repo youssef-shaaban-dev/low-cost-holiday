@@ -66,7 +66,7 @@ export default function AdminPackageTableRow({
       <td className="px-6 py-4">
         <div className="flex items-center gap-2 justify-end">
           <Link
-            href={`/admin/packages/${pkg.id}`}
+            href={`/admin/packages/edit?id=${pkg.id}`}
             className="flex items-center gap-1.5 px-3 py-1.5 bg-[#1C325B]/10 hover:bg-[#1C325B] text-[#1C325B] hover:text-white rounded-lg text-xs font-black transition-all"
           >
             <Pencil className="w-3.5 h-3.5" />

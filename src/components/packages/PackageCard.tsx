@@ -27,7 +27,7 @@ export default function PackageCard({ pkg, phone }: PackageCardProps) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, scale: 0.9 }}
       transition={{ duration: 0.5 }}
-      onClick={() => router.push(`/packages/${pkg.id}`)}
+      onClick={() => router.push(`/package?id=${pkg.id}`)}
       className="bg-white rounded-3xl overflow-hidden shadow-lg hover:shadow-2xl border border-brand-blue/5 flex flex-col h-full group transition-all duration-300 cursor-pointer"
     >
       <div className="relative aspect-video w-full overflow-hidden">

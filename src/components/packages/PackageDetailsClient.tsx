@@ -1,6 +1,7 @@
-import { createServer } from "@/lib/supabase-server";
-import { notFound } from "next/navigation";
-import Link from "next/link";
+"use client";
+
+import { useEffect, useState } from "react";
+import { useSearchParams } from "next/navigation";import Link from "next/link";
 import {
   MessageSquare,
   CheckCircle2,
@@ -10,81 +11,109 @@ import {
   Plane,
   Hotel,
   Users,
+  Loader2, // أضفنا أيقونة التحميل
 } from "lucide-react";
 import Image from "next/image";
+import { createClient } from "@/lib/supabase";
 
-// Fetch from Supabase
-async function getPackage(id: string) {
-  try {
-    const supabase = await createServer();
-    const { data } = await supabase
-      .from("packages")
-      .select("*")
-      .eq("id", id)
-      .single();
+// استبدل هذا بملف إعداد Supabase الخاص بـ Client-side
 
-    if (data) {
-      return {
-        id: data.id,
-        title: data.title,
-        destination: data.destination,
-        city: data.city,
-        duration: data.duration,
-        price: data.price,
-        childPrice: data.child_price,
-        inclusions: {
-          flight: data.flight,
-          hotel: data.hotel,
-          transfers: data.transfers,
-          guide: data.guide,
-        },
-        badge: data.badge,
-        image: data.image,
-        images: data.images ?? [],
-        whatsappMessage: data.whatsapp_message,
-        availableTravelDate: data.available_travel_date,
-        description: data.description || "",
-        airline: data.airline,
-        accommodationType: data.accommodation_type,
-        flightDetails: data.flight_details,
-        transfersDetails: data.transfers_details,
-        guideDetails: data.guide_details,
-        guidelines: data.guidelines,
-      };
+export default function PackageDetailsClient() {
+  const searchParams = useSearchParams();
+  const id = searchParams.get("id");
+
+  const [pkg, setPkg] = useState<any>(null);
+  const [phone, setPhone] = useState<string>("201000961382");
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
+  useEffect(() => {
+    if (!id) return;
+
+    async function fetchData() {
+      try {
+        const supabase = createClient();
+
+        // 1. جلب بيانات الباقة
+        const { data: pkgData, error: pkgError } = await supabase
+          .from("packages")
+          .select("*")
+          .eq("id", id)
+          .single();
+
+        if (pkgError || !pkgData) {
+          setError(true);
+          setLoading(false);
+          return;
+        }
+
+        setPkg({
+          id: pkgData.id,
+          title: pkgData.title,
+          destination: pkgData.destination,
+          city: pkgData.city,
+          duration: pkgData.duration,
+          price: pkgData.price,
+          childPrice: pkgData.child_price,
+          inclusions: {
+            flight: pkgData.flight,
+            hotel: pkgData.hotel,
+            transfers: pkgData.transfers,
+            guide: pkgData.guide,
+          },
+          badge: pkgData.badge,
+          image: pkgData.image,
+          images: pkgData.images ?? [],
+          whatsappMessage: pkgData.whatsapp_message,
+          availableTravelDate: pkgData.available_travel_date,
+          description: pkgData.description || "",
+          airline: pkgData.airline,
+          accommodationType: pkgData.accommodation_type,
+          flightDetails: pkgData.flight_details,
+          transfersDetails: pkgData.transfers_details,
+          guideDetails: pkgData.guide_details,
+          guidelines: pkgData.guidelines,
+        });
+
+        // 2. جلب رقم الهاتف
+        const { data: phoneData } = await supabase
+          .from("site_settings")
+          .select("value")
+          .eq("key", "whatsapp_phone")
+          .single();
+
+        if (phoneData?.value) {
+          setPhone(phoneData.value);
+        }
+      } catch (err) {
+        setError(true);
+      } finally {
+        setLoading(false);
+      }
     }
-  } catch {
-    // Return null if not found or error
+
+    fetchData();
+  }, [id]);
+
+  // واجهة التحميل
+  if (loading) {
+    return (
+      <div className="min-h-screen flex items-center justify-center bg-brand-offwhite">
+        <Loader2 className="w-12 h-12 animate-spin text-brand-orange" />
+      </div>
+    );
   }
-  return null;
-}
 
-async function getPhone(): Promise<string> {
-  try {
-    const supabase = await createServer();
-    const { data } = await supabase
-      .from("site_settings")
-      .select("value")
-      .eq("key", "whatsapp_phone")
-      .single();
-    return data?.value ?? "201000961382";
-  } catch {
-    return "201000961382";
-  }
-}
-
-export const dynamic = "force-dynamic";
-
-export default async function PackageDetails({
-  params,
-}: {
-  params: Promise<{ id: string }>;
-}) {
-  const resolvedParams = await params;
-  const pkg = await getPackage(resolvedParams.id);
-  const phone = await getPhone();
-
-  if (!pkg) {
-    notFound();
+  // واجهة الخطأ أو عدم العثور على الباقة
+  if (error || !pkg) {
+    return (
+      <div className="min-h-screen flex flex-col items-center justify-center bg-brand-offwhite font-cairo">
+        <h2 className="text-2xl sm:text-3xl font-black text-brand-blue mb-4">عفواً، لم يتم العثور على العرض!</h2>
+        <Link href="/" className="bg-brand-orange text-white px-6 py-3 rounded-xl font-bold hover:opacity-90">
+          العودة للرئيسية
+        </Link>
+      </div>
+    );
   }
 
   const waLink = `https://wa.me/${phone}?text=${encodeURIComponent(pkg.whatsappMessage)}`;
@@ -93,17 +122,13 @@ export default async function PackageDetails({
   const destinationText = isTurkey ? "تركيا 🇹🇷" : isArmenia ? "أرمينيا 🇦🇲" : "تونس 🇹🇳";
 
   return (
-    <div className="min-h-screen bg-brand-offwhite py-36 md:py-46 font-cairo  ">
+    <div className="min-h-screen bg-brand-offwhite py-36 md:py-46 font-cairo">
       {/* Breadcrumbs Navigation */}
       <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
         <nav className="flex flex-wrap items-center gap-2 text-xs sm:text-sm font-bold text-brand-blue/60 mb-6">
-          <Link href="/" className="hover:text-brand-orange transition-colors">
-            الرئيسية
-          </Link>
+          <Link href="/" className="hover:text-brand-orange transition-colors">الرئيسية</Link>
           <span className="text-brand-blue/30 font-light">/</span>
-          <Link href="/#packages" className="hover:text-brand-orange transition-colors">
-            عروض السفر
-          </Link>
+          <Link href="/#packages" className="hover:text-brand-orange transition-colors">عروض السفر</Link>
           <span className="text-brand-blue/30 font-light">/</span>
           <span className="text-brand-blue/70">{destinationText}</span>
           <span className="text-brand-blue/30 font-light">/</span>
@@ -124,7 +149,6 @@ export default async function PackageDetails({
             🕒 {pkg.duration}
           </span>
         </div>
-
         <h1 className="text-2xl sm:text-4xl md:text-5xl font-black text-brand-blue leading-tight mb-2">
           {pkg.title}
         </h1>
@@ -141,6 +165,7 @@ export default async function PackageDetails({
               width={800}
               height={600}
               priority
+              unoptimized // ضروري جداً للاستضافة المشتركة
             />
           </div>
           <div className="flex md:flex-col gap-4 h-auto md:h-[450px]">
@@ -151,6 +176,7 @@ export default async function PackageDetails({
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
                 width={400}
                 height={300}
+                unoptimized // ضروري جداً للاستضافة المشتركة
               />
             </div>
             <div className="flex-1 relative h-[120px] sm:h-[160px] md:h-[calc(50%-8px)] overflow-hidden rounded-2xl group shadow-sm border border-brand-blue/5">
@@ -160,6 +186,7 @@ export default async function PackageDetails({
                 className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-103"
                 width={400}
                 height={300}
+                unoptimized // ضروري جداً للاستضافة المشتركة
               />
             </div>
           </div>
@@ -171,19 +198,17 @@ export default async function PackageDetails({
         <div className="grid grid-cols-1 lg:grid-cols-3 gap-8">
           {/* Main Info */}
           <div className="lg:col-span-2 space-y-8">
-            {/* Overview */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-4">نظرة عامة على الرحلة</h2>
               <p className="text-brand-blue/80 text-base font-semibold leading-relaxed whitespace-pre-line">
                 {pkg.description || (isTurkey
-                  ? "استكشف سحر تركيا حيث يلتقي الشرق بالغرب في مزيج مذهل من التاريخ العريق والطبيعة الساحرة. نوفر لك في هذه الباقة تجربة سفر متكاملة ومثيرة تشمل تذاكر الطيران، والانتقالات المريحة، والزيارات السياحية الاستثنائية مع دعم متواصل طوال فترة إقامتك لضمان قضاء عطلة مميزة لا تُنسى مع عائلتك أو أصدقائك."
+                  ? "استكشف سحر تركيا حيث يلتقي الشرق بالغرب..."
                   : isArmenia
-                  ? "استكشف جمال أرمينيا وتاريخها الحضاري العريق، من أديرتها القديمة إلى مناظرها الطبيعية الخلابة. نوفر لك رحلة متكاملة تشمل الطيران والإقامة والجولات السياحية مع مرشد متمرس لاكتشاف جواهر القوقاز الخفية."
-                  : "اكتشف جمال تونس الخضراء وسحر شواطئها الفيروزية وتاريخها الممتد لآلاف السنين. تأخذك هذه الرحلة الاستثنائية في جولات حرة ومنظمة بين المعالم التاريخية كقرطاج وسيدي بوسعيد الأسطورية والأسواق التقليدية النابضة بالحياة، مع خدمات انتقال ممتازة لتستمتع بجوهرة البحر الأبيض المتوسط.")}
+                  ? "استكشف جمال أرمينيا وتاريخها الحضاري العريق..."
+                  : "اكتشف جمال تونس الخضراء وسحر شواطئها الفيروزية...")}
               </p>
             </section>
 
-            {/* Details */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
               <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">
                 تفاصيل العرض
@@ -233,55 +258,39 @@ export default async function PackageDetails({
               </div>
             </section>
 
-            {/* Inclusions */}
             <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
-              <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">
-                الباقة تشمل ما يلي
-              </h2>
+              <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5">الباقة تشمل ما يلي</h2>
               <div className="space-y-6">
                 {pkg.inclusions.flight && (
                   <div className="flex items-start gap-4">
-                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
+                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5" /></div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">تذاكر طيران ذهاب وعودة</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
-                        {pkg.flightDetails}
-                      </p>
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">{pkg.flightDetails}</p>
                     </div>
                   </div>
                 )}
                 {pkg.inclusions.transfers && (
                   <div className="flex items-start gap-4">
-                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
+                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5" /></div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">الانتقالات الداخلية الكاملة</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
-                        {pkg.transfersDetails}
-                      </p>
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">{pkg.transfersDetails}</p>
                     </div>
                   </div>
                 )}
                 {pkg.inclusions.guide && (
                   <div className="flex items-start gap-4">
-                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5">
-                      <CheckCircle2 className="w-5 h-5" />
-                    </div>
+                    <div className="bg-emerald-50 text-emerald-600 p-2 rounded-xl border border-emerald-100 flex-shrink-0 mt-0.5"><CheckCircle2 className="w-5 h-5" /></div>
                     <div>
                       <h3 className="font-extrabold text-brand-blue text-base sm:text-lg">جولات سياحية ومعالم البرنامج</h3>
-                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">
-                        {pkg.guideDetails}
-                      </p>
+                      <p className="text-xs sm:text-sm text-brand-blue/60 font-bold mt-1 leading-relaxed whitespace-pre-line">{pkg.guideDetails}</p>
                     </div>
                   </div>
                 )}
               </div>
             </section>
 
-            {/* Guidelines */}
             {pkg.guidelines && (
               <section className="bg-white p-6 sm:p-8 rounded-3xl shadow-sm border border-brand-blue/5">
                 <h2 className="text-xl sm:text-2xl font-black text-brand-blue mb-6 pb-3 border-b border-brand-blue/5 flex items-center gap-2">
@@ -311,21 +320,15 @@ export default async function PackageDetails({
 
               <div className="space-y-4 mb-8 text-sm font-semibold text-brand-blue/70">
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> الضرائب والرسوم
-                  </span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> الضرائب والرسوم</span>
                   <span className="text-emerald-600 font-bold">مشمولة بالكامل</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> تأكيد فوري للحجز
-                  </span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> تأكيد فوري للحجز</span>
                   <span className="text-brand-blue font-bold">يتطلب دفعة مقدمة</span>
                 </div>
                 <div className="flex items-center justify-between">
-                  <span className="flex items-center gap-1.5">
-                    <CheckCircle2 className="w-4 h-4 text-emerald-500" /> الدعم والمساعدة
-                  </span>
+                  <span className="flex items-center gap-1.5"><CheckCircle2 className="w-4 h-4 text-emerald-500" /> الدعم والمساعدة</span>
                   <span className="text-brand-blue font-bold">متوفر 24/7</span>
                 </div>
               </div>
@@ -339,10 +342,7 @@ export default async function PackageDetails({
                 <MessageSquare className="w-6 h-6 fill-white animate-pulse" />
                 <span>احجز الآن عبر واتساب</span>
               </a>
-
-              <p className="text-center text-xs text-brand-blue/50 mt-4 font-bold">
-                تواصل عبر واتساب للاستفسارات والحجز.
-              </p>
+              <p className="text-center text-xs text-brand-blue/50 mt-4 font-bold">تواصل عبر واتساب للاستفسارات والحجز.</p>
             </div>
           </div>
         </div>
@@ -354,9 +354,7 @@ export default async function PackageDetails({
           <div className="flex flex-col">
             <span className="text-[10px] text-brand-blue/60 font-bold">سعر الشخص يبدأ من</span>
             <div className="flex items-baseline gap-1">
-              <span className="text-xl font-black text-brand-orange">
-                {pkg.price.toLocaleString("ar-EG")}
-              </span>
+              <span className="text-xl font-black text-brand-orange">{pkg.price.toLocaleString("ar-EG")}</span>
               <span className="text-xs font-black text-brand-blue">ج.م</span>
             </div>
           </div>
