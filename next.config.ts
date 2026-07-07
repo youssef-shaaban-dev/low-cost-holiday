@@ -15,6 +15,7 @@ const nextConfig: NextConfig = {
     unoptimized: true,
   },
   output: "export",
+  trailingSlash: true,
 };
 
 export default nextConfig;
