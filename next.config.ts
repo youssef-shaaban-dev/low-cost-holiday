@@ -12,6 +12,7 @@ const nextConfig: NextConfig = {
         hostname: "ahnrawayhnobdxjookax.supabase.co",
       },
     ],
+    unoptimized: true,
   },
   output: "export",
 };
