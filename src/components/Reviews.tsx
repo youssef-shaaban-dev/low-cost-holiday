@@ -57,7 +57,7 @@ export default function Reviews() {
             قصص حقيقية من <span className="text-brand-orange">مسافرينا في مصر</span>
           </h2>
           <p className="text-base sm:text-lg text-brand-blue/70">
-            فخورون بثقة أكثر من ٥,٠٠٠ مسافر مصري اختاروا عروض الرحلات للدول المختلفة معانا.
+            فخورون بثقة أكثر من ٥,٠٠٠ مسافر مصري اختاروا عروض الرحلات للدول المختلفة معنا.
           </p>
         </div>
 
