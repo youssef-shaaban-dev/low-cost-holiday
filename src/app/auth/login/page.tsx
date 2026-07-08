@@ -4,7 +4,7 @@ import { useState } from "react";
 import { Lock, Mail, Eye, EyeOff, Plane } from "lucide-react";
 import { createClient } from "@/lib/supabase";
 
-export default function AdminLoginPage() {
+export default function LoginPage() {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);

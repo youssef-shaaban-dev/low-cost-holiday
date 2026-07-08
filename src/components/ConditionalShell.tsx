@@ -11,8 +11,9 @@ export default function ConditionalShell({
 }) {
   const pathname = usePathname();
   const isAdmin = pathname?.startsWith("/admin");
+  const isAuth = pathname?.startsWith("/auth");
 
-  if (isAdmin) return <>{children}</>;
+  if (isAdmin || isAuth) return <>{children}</>;
 
   return (
     <>

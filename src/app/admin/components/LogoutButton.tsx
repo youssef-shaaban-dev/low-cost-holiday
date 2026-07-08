@@ -22,7 +22,7 @@ export default function LogoutButton() {
       
       router.refresh();
       
-      router.replace("/admin/login");
+      router.replace("/auth/login");
     } catch (error) {
       console.error("Error logging out:", error);
     } finally {
