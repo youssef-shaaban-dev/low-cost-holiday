@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { Lock, Mail, Eye, EyeOff, Plane } from "lucide-react";
 import { createClient } from "@/lib/supabase";
+import Image from "next/image";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -37,8 +38,8 @@ export default function LoginPage() {
       <div className="relative w-full max-w-md">
         <div className="bg-white/5 border border-white/10 rounded-3xl p-8 backdrop-blur-sm shadow-2xl">
           <div className="flex flex-col items-center mb-8">
-            <div className="w-16 h-16 bg-[#1C325B] rounded-2xl flex items-center justify-center mb-4 shadow-lg">
-              <Plane className="w-8 h-8 text-[#5A9BD5]" />
+            <div className="w-32 h-32 bg-[#1C325B] rounded-2xl flex items-center justify-center mb-4">
+            <Image src="/logo.webp" width={200} height={200} alt="Low Cost Holidays" />
             </div>
             <h1 className="text-2xl font-black text-white text-center">لوحة التحكم</h1>
             <p className="text-white/50 text-sm font-bold mt-1 text-center">Low Cost Holidays — Admin</p>
