@@ -25,4 +25,6 @@ export interface TravelPackage {
     transfers: boolean;
     guide: boolean;
   };
+  seo_title?: string;
+  seo_description?: string;
 }

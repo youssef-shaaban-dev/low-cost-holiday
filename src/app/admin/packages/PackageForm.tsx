@@ -37,6 +37,8 @@ export interface PackageFormData {
   transfers_details?: string;
   guide_details?: string;
   guidelines?: string;
+  seo_title?: string;
+  seo_description?: string;
 }
 
 const EMPTY_FORM: PackageFormData = {
@@ -65,6 +67,8 @@ const EMPTY_FORM: PackageFormData = {
   transfers_details: "الاستقبال والترحيب في المطار عند الوصول والتوصيل للفندق، والنقل عند العودة بواسطة حافلات سياحية حديثة ومكيفة ومريحة.",
   guide_details: "برنامج جولات سياحية منظم وممتع لزيارة أشهر المعالم التاريخية والطبيعية والترفيهية المذكورة في خطة الرحلة بمرافقة مرشد سياحي مؤهل.",
   guidelines: "يرجى التأكد من أن جواز سفرك سارٍ لمدة لا تقل عن ٦ أشهر من تاريخ السفر المقرر.\nالحصول على التأشيرة والموافقات الأمنية يختلف حسب جنسية المسافر والوجهة.\nتخضع مواعيد رحلات الطيران للتأكيد النهائي والتغييرات الطفيفة من قبل شركات الطيران قبل المغادرة بـ ٤٨ ساعة.\nيتواجد مندوبونا في المطارات لتسهيل إجراءات استقبالكم وانتقالاتكم بسلاسة.",
+  seo_title: "",
+  seo_description: "",
 };
 
 interface PackageFormProps {
@@ -199,6 +203,31 @@ export default function PackageForm({ initialData, mode }: PackageFormProps) {
 
         {/* 6. WhatsApp */}
         <WhatsappSection form={form} set={set} />
+
+        {/* 7. SEO */}
+        <div className="bg-white p-6 rounded-2xl border border-gray-100 shadow-sm">
+          <h2 className="text-base font-black text-gray-800 mb-5 pb-3 border-b border-gray-100">🔍 تحسين محركات البحث (SEO)</h2>
+          <div className="space-y-4">
+            <div>
+              <label className="block text-sm font-black text-gray-700 mb-1.5">SEO Title (عنوان الصفحة)</label>
+              <input
+                value={form.seo_title || ""}
+                onChange={(e) => set("seo_title", e.target.value)}
+                placeholder="اتركه فارغاً لاستخدام اسم الباقة كعنوان"
+                className="w-full border border-gray-200 rounded-xl px-4 py-2.5 text-sm font-bold focus:outline-none focus:border-[#1C325B] focus:ring-2 focus:ring-[#1C325B]/10"
+              />
+            </div>
+            <div>
+              <label className="block text-sm font-black text-gray-700 mb-1.5">SEO Description (وصف الصفحة)</label>
+              <textarea
+                value={form.seo_description || ""}
+                onChange={(e) => set("seo_description", e.target.value)}
+                placeholder="اتركه فارغاً لاستخدام الوصف الافتراضي للموقع"
+                className="w-full border border-gray-200 rounded-xl px-4 py-3 text-sm font-bold focus:outline-none focus:border-[#1C325B] focus:ring-2 focus:ring-[#1C325B]/10 min-h-[100px] resize-y"
+              />
+            </div>
+          </div>
+        </div>
 
         {error && (
           <div className="bg-red-50 border border-red-200 text-red-700 rounded-xl px-4 py-3 text-sm font-bold">
