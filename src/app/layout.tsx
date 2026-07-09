@@ -16,8 +16,8 @@ export const viewport: Viewport = {
 
 export const metadata: Metadata = {
   metadataBase: new URL("https://lowcostholidays.com.eg"),
-  title: "لو كوست هوليدايز | أرخص عروض السفر لتركيا وتونس من مصر",
-  description: "سافر إلى إسطنبول، أنطاليا، وتونس بأرخص الأسعار في مصر. رحلات طيران مباشر، فنادق مختارة بعناية 4 نجوم و 5 نجوم، وانتقالات كاملة. احجز رحلتك الآن وسافر بأمان.",
+  title: "سافر من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة",
+  description: "عروض رحلات من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة طيران مباشر بأفضل الأسعار فى مصر، واستمتع بأقوى باقات السفر المتكاملة من طيران وانتقالات وجولات سياحية.",
   keywords: ["سياحة لتركيا", "عروض تونس", "رحلات إسطنبول", "أنطاليا طيران مباشر", "سفر تونس من مصر", "حجز رحلات تركيا", "لو كوست هوليدايز"],
   authors: [{ name: "Low Cost Holidays" }],
   icons: {
@@ -28,8 +28,8 @@ export const metadata: Metadata = {
     apple: "/icon.png",
   },
   openGraph: {
-    title: "لو كوست هوليدايز | أرخص عروض السفر لتركيا وتونس من مصر",
-    description: "سافر إلى إسطنبول، أنطاليا، وتونس بأرخص الأسعار في مصر. رحلات طيران مباشر، فنادق مختارة بعناية 4 نجوم و 5 نجوم، وانتقالات كاملة. احجز رحلتك الآن وسافر بأمان.",
+    title: "سافر من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة",
+    description: "عروض رحلات من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة طيران مباشر بأفضل الأسعار فى مصر، واستمتع بأقوى باقات السفر المتكاملة من طيران وانتقالات وجولات سياحية.",
     siteName: "لو كوست هوليدايز",
     images: [
       {
@@ -44,8 +44,8 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "لو كوست هوليدايز | أرخص عروض السفر لتركيا وتونس من مصر",
-    description: "سافر إلى إسطنبول، أنطاليا، وتونس بأرخص الأسعار في مصر. رحلات طيران مباشر، فنادق مختارة بعناية 4 نجوم و 5 نجوم، وانتقالات كاملة. احجز رحلتك الآن وسافر بأمان.",
+    title: "سافر من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة",
+    description: "عروض رحلات من القاهرة إلى تركيا، ألبانيا، أرمينيا وتونس الجميلة طيران مباشر بأفضل الأسعار فى مصر، واستمتع بأقوى باقات السفر المتكاملة من طيران وانتقالات وجولات سياحية.",
     images: ["/logo.webp"],
   },
 };
@@ -53,6 +53,7 @@ export const metadata: Metadata = {
 
 import QueryProvider from "@/providers/QueryProvider";
 import ConditionalShell from "@/components/ConditionalShell";
+import { GoogleTagManager } from "@next/third-parties/google";
 
 export default function RootLayout({
   children,
@@ -66,7 +67,9 @@ export default function RootLayout({
       className={`${cairo.variable} h-full antialiased scroll-smooth`}
       data-scroll-behavior="smooth"
     >
+      <GoogleTagManager gtmId="GTM-KD8TMC9R" />
       <body className="min-h-full flex flex-col bg-brand-offwhite text-brand-blue font-cairo overflow-x-hidden selection:bg-brand-orange selection:text-white">
+
         <QueryProvider>
           <ConditionalShell>{children}</ConditionalShell>
         </QueryProvider>
